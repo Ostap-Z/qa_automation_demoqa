@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from locators.elements_page_locators import TextBoxPageLocators
+from locators.text_box_locators import TextBoxPageLocators
 
 
 class TextBoxPage(BasePage):

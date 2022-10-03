@@ -1,4 +1,4 @@
-from pages.elements_page import TextBoxPage
+from pages.text_box_page import TextBoxPage
 
 
 class TestTextBox:
