@@ -1,4 +1,4 @@
 .idea
 __pycache__/
-tests/geckodriver.log
-venv
+*.log
+venv/
