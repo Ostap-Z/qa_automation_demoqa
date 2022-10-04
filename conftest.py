@@ -7,9 +7,10 @@ from selenium.webdriver.chrome.service import Service
 
 @pytest.fixture
 def driver():
-    chrome_options = ChromeOptions()
-    chrome_options.add_argument("headless")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    # chrome_options = ChromeOptions()
+    # chrome_options.add_argument("headless")
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    driver = webdriver.Chrome()
 
     yield driver
     driver.quit()
