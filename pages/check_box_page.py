@@ -29,26 +29,11 @@ class CheckBoxPage(BasePage):
         for box in checked_list:
             title_item = box.find_element(*self.locators.TITLE_ITEM)
             data.append(title_item.text)
-        return data
+        return str(data).replace(' ', '').replace('.doc', '').lower()
 
     def get_output_result(self):
         result_list = self.elements_are_present(self.locators.OUTPUT_RESULT)
         data = []
         for item in result_list:
             data.append(item.text)
-        return data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return str(data).replace(" ", "").lower()
