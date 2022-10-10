@@ -6,11 +6,11 @@ class TextBoxPageLocators:
     FULL_NAME = (By.ID, "userName")
     EMAIL = (By.ID, "userEmail")
     CURRENT_ADDRESS = (By.ID, "currentAddress")
-    PERNAMENT_ADDRESS = (By.ID, "permanentAddress")
+    PERMANENT_ADDRESS = (By.ID, "permanentAddress")
     SUBMIT_BUTTON = (By.ID, "submit")
 
     # Locators for form validation
     CREATED_FULL_NAME = (By.ID, "name")
     CREATED_EMAIL = (By.ID, "email")
     CREATED_CURRENT_ADDRESS = (By.ID, "currentAddress")
-    CREATED_PERNAMENT_ADDRESS = (By.ID, "permanentAddress")
+    CREATED_PERMANENT_ADDRESS = (By.ID, "permanentAddress")
