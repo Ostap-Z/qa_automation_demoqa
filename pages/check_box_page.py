@@ -33,7 +33,5 @@ class CheckBoxPage(BasePage):
 
     def get_output_result(self):
         result_list = self.elements_are_present(self.locators.OUTPUT_RESULT)
-        data = []
-        for item in result_list:
-            data.append(item.text)
+        data = [item.text for item in result_list]
         return str(data).replace(" ", "").lower()
