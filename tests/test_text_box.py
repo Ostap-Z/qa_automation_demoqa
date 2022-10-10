@@ -8,5 +8,5 @@ class TestTextBox:
         text_box_page.open()
         input_data = text_box_page.fill_in_form_fields()
         output_data = text_box_page.validate_filled_form()
-        assert input_data == output_data, f"\nActual output data: {output_data}\n"\
-                                          f"Expected data: {input_data}\n"
+        assert input_data == output_data, f"\nActual result: {output_data}\n"\
+                                          f"Expected result: {input_data}\n"
