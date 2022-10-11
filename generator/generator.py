@@ -16,6 +16,7 @@ def generated_person():
         last_name=faker_ru.last_name(),
         age=randint(0, 100),
         department=faker_ru.job(),
+        salary=randint(300, 10_000),
         email=faker_ru.email(),
         current_address=faker_ru.address(),
         permanent_address=faker_ru.address()
