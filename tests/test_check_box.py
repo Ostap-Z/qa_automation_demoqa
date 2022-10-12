@@ -11,4 +11,4 @@ class TestCheckBox:
         input_checkbox = check_box_page.get_checked_checkboxes()
         output_checkbox = check_box_page.get_output_result()
         assert input_checkbox == output_checkbox, f"\nActual result: {output_checkbox}"\
-                                                                  f"\nExpected result: {input_checkbox}\n"
+                                                  f"\nExpected result: {input_checkbox}\n"
