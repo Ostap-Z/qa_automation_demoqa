@@ -32,3 +32,12 @@ class TestWebTable:
         row = web_table_page.check_search_person()
         assert age in row, f"Actual result: {age} is not present in the {row}"\
                            f"Expected result: {age} should be present in the {row}"
+
+    def test_web_page_delete_person(self, driver):
+        web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
+        web_table_page.open()
+        email = web_table_page.add_new_person()[3]
+        web_table_page.search_person(email)
+        web_table_page.delete_person()
+        deleted_text = web_table_page.check_deleted_person()
+        assert deleted_text == "No rows found"
