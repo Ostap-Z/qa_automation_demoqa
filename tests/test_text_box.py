@@ -12,4 +12,4 @@ class TestTextBox:
         input_data = text_box_page.fill_in_form_fields()
         output_data = text_box_page.validate_filled_form()
         assert input_data == output_data, f"\nActual result: {output_data}\n"\
-                                          f"Expected result: {input_data}\n"
+                                          f"\nExpected result: {input_data}\n"
