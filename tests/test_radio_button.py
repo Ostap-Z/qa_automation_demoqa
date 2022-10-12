@@ -1,5 +1,3 @@
-import time
-
 from pages.radio_button_page import RadioButtonPage
 
 
