@@ -23,7 +23,13 @@ class WebTablePage(BasePage):
             self.element_is_visible(self.locators.EMAIL_INPUT).send_keys(email)
             self.element_is_visible(self.locators.AGE_INPUT).send_keys(age)
             self.element_is_visible(self.locators.SALARY_INPUT).send_keys(salary)
+            self.element_is_visible(self.locators.DEPARTMENT_INPUT).send_keys(department)
             self.element_is_visible(self.locators.SUBMIT_BUTTON).click()
 
             count -= 1
-            return first_name, last_name, email, age, salary, department
+            return [first_name, last_name, str(age), email, str(salary), department]
+
+    def check_new_added_person(self):
+        full_person_list = self.elements_are_present(self.locators.FULL_PERSON_LIST)
+        data = [item.text.splitlines() for item in full_person_list]
+        return data
