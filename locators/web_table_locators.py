@@ -18,6 +18,7 @@ class WebTablePageLocators:
     UPDATE_BUTTON = (By.CSS_SELECTOR, "span[title='Edit']")
     ROW_PARENT = (By.XPATH, ".//ancestor::div[@class='rt-tr-group']")
     NO_ROWS_FOUND = (By.CLASS_NAME, "rt-noData")
+    ROW_COUNT_LIST = (By.CSS_SELECTOR, "select[aria-label='rows per page']")
 
     # Locator for the search
     SEARCH_INPUT = (By.ID, "searchBox")
