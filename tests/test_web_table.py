@@ -23,7 +23,7 @@ class TestWebTable:
         assert key_word in table_result, f"\nActual result: {key_word} not in the table"\
                                          f"\nExpected result: {key_word} should be in the table"
 
-    def test_web_page_edit_person(self, driver):
+    def test_web_table_edit_person(self, driver):
         web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
         web_table_page.open()
         last_name = web_table_page.add_new_person()[1]
@@ -33,7 +33,7 @@ class TestWebTable:
         assert age in row, f"Actual result: {age} is not present in the {row}"\
                            f"Expected result: {age} should be present in the {row}"
 
-    def test_web_page_delete_person(self, driver):
+    def test_web_table_delete_person(self, driver):
         web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
         web_table_page.open()
         email = web_table_page.add_new_person()[3]
@@ -41,3 +41,4 @@ class TestWebTable:
         web_table_page.delete_person()
         deleted_text = web_table_page.check_deleted_person()
         assert deleted_text == "No rows found"
+    
