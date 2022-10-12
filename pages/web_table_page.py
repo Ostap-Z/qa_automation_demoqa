@@ -1,3 +1,5 @@
+from selenium.webdriver.common.by import By
+
 from pages.base_page import BasePage
 from locators.web_table_locators import WebTablePageLocators
 from generator.generator import generated_person
@@ -56,3 +58,18 @@ class WebTablePage(BasePage):
 
     def check_deleted_person(self):
         return self.element_is_present(self.locators.NO_ROWS_FOUND).text
+
+    def select_up_to_rows(self):
+        count = [5, 10, 20, 25, 50, 100]
+        data = []
+        for x in count:
+            count_row_button = self.element_is_visible(self.locators.ROW_COUNT_LIST)
+            self.go_to_element(count_row_button)
+            count_row_button.click()
+            self.element_is_visible((By.CSS_SELECTOR, f"option[value='{x}']")).click()
+            data.append(self.check_count_rows())
+        return data
+
+    def check_count_rows(self):
+        list_rows = self.elements_are_present(self.locators.FULL_PERSON_LIST)
+        return len(list_rows)
