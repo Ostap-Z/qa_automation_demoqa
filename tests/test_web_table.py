@@ -43,7 +43,7 @@ class TestWebTable:
         deleted_text = web_table_page.check_deleted_person()
         assert deleted_text == "No rows found"
 
-    @pytest.mark.xfail(reason="Expected failed due to there is a bug - the user can't see count_rows dropdown when more than 25 rows are opened")
+    @pytest.mark.xfail(reason="Expected failed due to there is a bug - the user can't see count_rows dropdown when more than 20 rows are opened")
     def test_web_table_change_row_count(self, driver):
         web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
         web_table_page.open()
