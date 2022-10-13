@@ -35,7 +35,8 @@ class BasePage:
     def go_to_element(self, locator):
         self.driver.execute_script("arguments[0].scrollIntoView();", locator)
 
-    def get_logger(self):
+    @staticmethod
+    def get_logger():
         logger_name = inspect.stack()[1][3]
         logger = logging.getLogger(logger_name)
         file_handler = logging.FileHandler('logfile.txt')
