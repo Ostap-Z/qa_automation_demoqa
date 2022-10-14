@@ -23,7 +23,7 @@ def pytest_addoption(parser):
     )
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture
 def driver(request):
     global driver
     browser_name = request.config.getoption("--browser_name").lower()
