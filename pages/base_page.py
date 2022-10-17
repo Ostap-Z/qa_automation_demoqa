@@ -1,6 +1,7 @@
 import logging
 import inspect
 
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -34,6 +35,16 @@ class BasePage:
 
     def go_to_element(self, locator):
         self.driver.execute_script("arguments[0].scrollIntoView();", locator)
+
+    def action_double_click(self, locator):
+        action = ActionChains(self.driver)
+        action.double_click(locator)
+        action.perform()
+
+    def action_right_click(self, locator):
+        action = ActionChains(self.driver)
+        action.context_click(locator)
+        action.perform()
 
     @staticmethod
     def get_logger():
