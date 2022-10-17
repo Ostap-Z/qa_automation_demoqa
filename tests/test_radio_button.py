@@ -1,8 +1,11 @@
+import pytest
+
 from pages.radio_button_page import RadioButtonPage
 
 
 class TestRadioButton:
 
+    @pytest.mark.xfail(reason="There's a known bug that the user can't choose 'No' button")
     def test_radio_button(self, driver):
         radio_button_page = RadioButtonPage(driver, "https://demoqa.com/radio-button")
         radio_button_page.open()
