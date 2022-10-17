@@ -19,7 +19,7 @@ class TextBoxPage(BasePage):
         self.element_is_visible(self.locators.CURRENT_ADDRESS).send_keys(current_address)
         self.element_is_visible(self.locators.PERMANENT_ADDRESS).send_keys(permanent_address)
         log.info(f"Filled in form with data: {full_name, email, current_address, permanent_address}")
-        self.go_to_element(self.locators.SUBMIT_BUTTON).click()
+        self.element_is_visible(self.locators.SUBMIT_BUTTON).click()
         log.info("Submitted form")
         return full_name, email, current_address, permanent_address
 
