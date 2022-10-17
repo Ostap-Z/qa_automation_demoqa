@@ -6,7 +6,7 @@ class ButtonsPageLocators:
     # Locators for buttons on the buttons page
     DOUBLE_CLICK_BUTTON = (By.CSS_SELECTOR, "button#doubleClickBtn")
     RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, "button#rightClickBtn")
-    LEFT_CLICK_BUTTON = (By.CSS_SELECTOR, "button#UdmHn")
+    LEFT_CLICK_BUTTON = (By.XPATH, "//div[3]/button")
 
     # Locators for the result of clicked buttons
     SUCCESS_DOUBLE_CLICK = (By.CSS_SELECTOR, "p#doubleClickMessage")
