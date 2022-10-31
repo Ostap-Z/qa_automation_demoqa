@@ -4,7 +4,6 @@ from faker import Faker
 
 from data.data import Person
 
-
 faker_ru = Faker("ru_RU")
 Faker.seed()
 
@@ -21,3 +20,11 @@ def generated_person():
         current_address=faker_ru.address(),
         permanent_address=faker_ru.address()
     )
+
+
+def generated_file():
+    path = rf"C:\Users\OstapZherebetskyi\Desktop\test_examples\qa_automation_demo\qa_automation_demoqa\filetest{randint(0, 999)}.txt"
+    with open(path, "w+") as file:
+        file.write(f"Hello World")
+
+    return file.name, path
