@@ -1,12 +1,12 @@
 import os
 
 from pages.base_page import BasePage
-from locators.upload_download_locators import UploadAndDownloadLocators
+from locators.upload_locators import UploadLocators
 from generator.generator import generated_file
 
 
-class UploadAndDownloadPage(BasePage):
-    locators = UploadAndDownloadLocators()
+class UploadPage(BasePage):
+    locators = UploadLocators()
 
     def upload_file(self):
         file_name, path = generated_file()
