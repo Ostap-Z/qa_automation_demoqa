@@ -18,7 +18,9 @@ class ButtonsPage(BasePage):
             return self.check_clicked_button(self.locators.SUCCESS_RIGHT_CLICK)
 
         if type_click == "left":
-            self.element_is_visible(self.locators.LEFT_CLICK_BUTTON).click()
+            left_button = self.element_is_visible(self.locators.LEFT_CLICK_BUTTON)
+            self.go_to_element(left_button)
+            left_button.click()
             log.info(f"Button {type_click} was pressed")
             return self.check_clicked_button(self.locators.SUCCESS_LEFT_CLICK)
 
