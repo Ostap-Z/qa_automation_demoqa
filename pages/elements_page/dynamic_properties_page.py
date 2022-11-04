@@ -3,7 +3,7 @@ import time
 from selenium.common import TimeoutException
 
 from pages.base_page import BasePage
-from locators.dynamic_properties_locators import DynamicPropertiesLocators
+from locators.elements_locators.dynamic_properties_locators import DynamicPropertiesLocators
 
 
 class DynamicPropertiesPage(BasePage):

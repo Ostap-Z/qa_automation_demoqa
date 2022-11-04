@@ -1,7 +1,7 @@
 import requests
 
 from pages.base_page import BasePage
-from locators.links_locators import LinksPageLocators
+from locators.elements_locators.links_locators import LinksPageLocators
 
 
 class LinksPage(BasePage):

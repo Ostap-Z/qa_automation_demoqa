@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from locators.radio_button_locators import RadioButtonPageLocators
+from locators.elements_locators.radio_button_locators import RadioButtonPageLocators
 
 
 class RadioButtonPage(BasePage):

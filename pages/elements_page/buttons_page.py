@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from locators.buttons_locators import ButtonsPageLocators
+from locators.elements_locators.buttons_locators import ButtonsPageLocators
 
 
 class ButtonsPage(BasePage):

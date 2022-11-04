@@ -3,7 +3,7 @@ import os.path
 from random import randint
 
 from pages.base_page import BasePage
-from locators.download_locators import DownloadLocators
+from locators.elements_locators.download_locators import DownloadLocators
 
 
 class DownloadPage(BasePage):

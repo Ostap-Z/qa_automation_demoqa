@@ -1,7 +1,7 @@
 import os
 
 from pages.base_page import BasePage
-from locators.upload_locators import UploadLocators
+from locators.elements_locators.upload_locators import UploadLocators
 from generator.generator import generated_file
 
 
