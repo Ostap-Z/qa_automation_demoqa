@@ -4,6 +4,7 @@ import inspect
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 
 class BasePage:
@@ -16,6 +17,7 @@ class BasePage:
         self.driver.get(self.url)
 
     def element_is_visible(self, locator, timeout=5):
+        self.go_to_element(self.element_is_present(locator))
         return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
     def elements_are_visible(self, locator, timeout=5):
@@ -45,6 +47,21 @@ class BasePage:
         action = ActionChains(self.driver)
         action.context_click(locator)
         action.perform()
+
+    def remove_footer(self):
+        self.driver.execute_script("document.getElementByTagName('footer')[0].remove();")
+        self.driver.execute_script("document.getElementByID('close-fixedban').remove();")
+
+    def hide_ads(self):
+        all_iframes = self.driver.find_elements(By.TAG_NAME, "iframe")
+        if len(all_iframes) > 0:
+            self.driver.execute_script("""
+                var elems = document.getElementsByTagName("iframe"); 
+                for(var i = 0, max = elems.length; i < max; i++)
+                     {
+                         elems[i].hidden=true;
+                     }
+                                  """)
 
     @staticmethod
     def get_logger():
