@@ -1,4 +1,4 @@
-from .base_page import BasePage
+from pages.base_page import BasePage
 from locators.text_box_locators import TextBoxPageLocators
 from generator.generator import generated_person
 
