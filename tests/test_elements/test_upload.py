@@ -1,4 +1,4 @@
-from pages.upload_page import UploadPage
+from pages.elements_page.upload_page import UploadPage
 
 
 class TestUpload:

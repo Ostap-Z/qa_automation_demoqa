@@ -2,7 +2,7 @@ from random import randint
 
 import pytest
 
-from pages.web_table_page import WebTablePage
+from pages.elements_page.web_table_page import WebTablePage
 
 
 class TestWebTable:

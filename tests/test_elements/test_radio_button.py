@@ -1,6 +1,6 @@
 import pytest
 
-from pages.radio_button_page import RadioButtonPage
+from pages.elements_page.radio_button_page import RadioButtonPage
 
 
 class TestRadioButton:

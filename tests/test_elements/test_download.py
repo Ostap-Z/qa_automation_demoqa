@@ -1,4 +1,4 @@
-from pages.download_page import DownloadPage
+from pages.elements_page.download_page import DownloadPage
 
 
 class TestDownload:

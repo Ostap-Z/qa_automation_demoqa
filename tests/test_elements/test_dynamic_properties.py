@@ -1,4 +1,4 @@
-from pages.dynamic_properties_page import DynamicPropertiesPage
+from pages.elements_page.dynamic_properties_page import DynamicPropertiesPage
 
 
 class TestDynamicProperties:

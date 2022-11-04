@@ -1,6 +1,6 @@
 import pytest
 
-from pages.text_box_page import TextBoxPage
+from pages.elements_page.text_box_page import TextBoxPage
 
 
 class TestTextBox:

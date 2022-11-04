@@ -1,4 +1,4 @@
-from pages.buttons_page import ButtonsPage
+from pages.elements_page.buttons_page import ButtonsPage
 
 
 class TestButtons:

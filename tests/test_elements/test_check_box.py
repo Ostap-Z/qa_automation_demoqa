@@ -1,4 +1,4 @@
-from pages.check_box_page import CheckBoxPage
+from pages.elements_page.check_box_page import CheckBoxPage
 
 
 class TestCheckBox:

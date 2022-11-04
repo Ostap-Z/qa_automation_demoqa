@@ -1,4 +1,4 @@
-from pages.links_page import LinksPage
+from pages.elements_page.links_page import LinksPage
 
 
 class TestLinks:
