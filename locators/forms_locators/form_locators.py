@@ -22,5 +22,5 @@ class FormLocators:
     SUBMIT_BUTTON = (By.CSS_SELECTOR, "button#submit")
 
     # Table results
-    # RESULT_TABLE = (By.CSS_SELECTOR, "")
+    RESULT_TABLE = (By.XPATH, "//div[@class='table-responsive']//td[2]")
 
