@@ -49,8 +49,8 @@ class BasePage:
         action.perform()
 
     def remove_footer(self):
-        self.driver.execute_script("document.getElementByTagName('footer')[0].remove();")
-        self.driver.execute_script("document.getElementByID('close-fixedban').remove();")
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        self.driver.execute_script("document.getElementById('close-fixedban').remove();")
 
     def hide_ads(self):
         all_iframes = self.driver.find_elements(By.TAG_NAME, "iframe")
