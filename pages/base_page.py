@@ -63,6 +63,9 @@ class BasePage:
                      }
                                   """)
 
+    def go_to_new_window(self, index):
+        self.driver.switch_to.window(self.driver.window_handles[index])
+
     @staticmethod
     def get_logger():
         logger_name = inspect.stack()[1][3]
