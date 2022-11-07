@@ -1,4 +1,5 @@
 import time
+from random import randint
 
 from selenium.common import UnexpectedAlertPresentException
 
@@ -34,3 +35,12 @@ class AlertsPage(BasePage):
         alert.accept()
         confirm_result_text = self.element_is_present(self.locators.CONFIRM_TEXT_RESULT).text
         return confirm_result_text.split(" ")[-1].lower()
+
+    def check_prompt_alert(self):
+        text = f"autotest{randint(0, 1000)}"
+        self.element_is_visible(self.locators.ALERT_PROMPT_BUTTON).click()
+        alert = self.go_to_alert()
+        alert.send_keys(text)
+        alert.accept()
+        prompt_text_result = self.element_is_present(self.locators.PROMPT_TEXT_RESULT).text
+        return prompt_text_result.split(" ")[-1], text
