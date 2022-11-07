@@ -72,6 +72,9 @@ class BasePage:
     def go_to_frame(self, locator):
         self.driver.switch_to.frame(locator)
 
+    def go_to_default_content(self):
+        self.driver.switch_to.default_content()
+
     @staticmethod
     def get_logger():
         logger_name = inspect.stack()[1][3]
