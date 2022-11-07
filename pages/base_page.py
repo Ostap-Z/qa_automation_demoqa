@@ -70,7 +70,7 @@ class BasePage:
         self.driver.switch_to.window(self.driver.window_handles[index])
 
     def go_to_frame(self, locator):
-        return self.driver.switch_to.frame(locator)
+        self.driver.switch_to.frame(locator)
 
     @staticmethod
     def get_logger():
