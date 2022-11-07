@@ -63,6 +63,17 @@ class BasePage:
                      }
                                   """)
 
+    def hide_image_ads(self):
+        all_img_ads = self.driver.find_elements(By.TAG_NAME, "img")
+        if len(all_img_ads) > 0:
+            self.driver.execute_script("""
+                var elems = document.getElementsByTagName("img"); 
+                for(var i = 0, max = elems.length; i < max; i++)
+                     {
+                         elems[i].hidden=true;
+                     }
+                                  """)
+
     def go_to_alert(self):
         return self.driver.switch_to.alert
 
