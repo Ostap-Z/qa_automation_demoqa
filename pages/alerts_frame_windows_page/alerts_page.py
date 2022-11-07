@@ -27,3 +27,10 @@ class AlertsPage(BasePage):
         except UnexpectedAlertPresentException:
             alert = self.go_to_alert()
             return alert.text
+
+    def check_confirm_alert(self):
+        self.element_is_visible(self.locators.ALERT_CONFIRM_BUTTON).click()
+        alert = self.go_to_alert()
+        alert.accept()
+        confirm_result_text = self.element_is_present(self.locators.CONFIRM_TEXT_RESULT).text
+        return confirm_result_text.split(" ")[-1].lower()
