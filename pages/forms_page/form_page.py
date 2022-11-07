@@ -11,6 +11,7 @@ class FormPage(BasePage):
     locators = FormLocators()
 
     def fill_form_fields(self):
+        log = self.get_logger()
         person = next(generated_person())
         file_name, path = generated_file()
         self.hide_ads()
@@ -32,14 +33,17 @@ class FormPage(BasePage):
         self.element_is_visible(self.locators.CITY_INPUT).send_keys(Keys.RETURN)
         self.hide_ads()
         self.element_is_visible(self.locators.SUBMIT_BUTTON).click()
+        log.info(f"Filled in form with data: {person}")
         return person
 
     def get_form_result(self):
+        log = self.get_logger()
         result = self.elements_are_present(self.locators.RESULT_TABLE)
         data = []
         for item in result:
             self.go_to_element(item)
             data.append(item.text)
+        log.info(f"Form data presented in the result: {data}")
         return data
 
     @staticmethod
