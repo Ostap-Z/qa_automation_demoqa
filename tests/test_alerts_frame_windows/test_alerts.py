@@ -17,3 +17,11 @@ class TestAlerts:
         assert alert_result == "This alert appeared after 5 seconds", \
             f"\nActual result: alert is not presented. Alert text: {alert_result}" \
             "\nExpected result: alert should be presented with text 'This alert appeared after 5 seconds'"
+
+    def test_confirm_alert(self, driver):
+        alert_page = AlertsPage(driver, "https://demoqa.com/alerts")
+        alert_page.open()
+        confirm_alert_result = alert_page.check_confirm_alert()
+        assert confirm_alert_result == "ok".lower(), \
+            f"\nActual result: alert is not presented or confirmed, text result is {confirm_alert_result}"\
+            "\nExpected result: message 'ok' should be shown after the alert confirmation"
