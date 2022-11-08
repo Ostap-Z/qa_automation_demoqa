@@ -34,27 +34,20 @@ class AutoCompletePage(BasePage):
         log.info(f"Count of values before, after: {count_value_before}, {count_value_after}")
         return count_value_before, count_value_after
 
-    def check_multiple_color(self):
+    def check_multiple_values(self):
         log = self.get_logger()
         color_list = self.elements_are_present(self.locators.MULTIPLE_VALUE)
         colors = [color.text for color in color_list]
         log.info(f"Returned colors: {colors} ")
         return colors
 
+    def fill_single_input(self):
+        color = sample(next(generated_color()).color_name, k=1)
+        single_input = self.element_is_clickable(self.locators.SINGLE_INPUT)
+        single_input.send_keys(color)
+        single_input.send_keys(Keys.ENTER)
+        return color[0]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def check_single_value(self):
+        color = self.element_is_visible(self.locators.SINGLE_VALUE)
+        return color.text
