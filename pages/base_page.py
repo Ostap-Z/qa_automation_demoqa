@@ -48,6 +48,11 @@ class BasePage:
         action.context_click(locator)
         action.perform()
 
+    def action_drag_and_drop_by_offset(self, locator, x_coord, y_coord):
+        action = ActionChains(self.driver)
+        action.drag_and_drop_by_offset(locator, x_coord, y_coord)
+        action.perform()
+
     def remove_footer(self):
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         self.driver.execute_script("document.getElementById('close-fixedban').remove();")
