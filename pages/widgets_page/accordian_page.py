@@ -30,10 +30,12 @@ class AccordianPage(BasePage):
         except TimeoutException:
             accordian_title.click()
             accordian_content = self.element_is_visible(accordian[accordian_num]['content']).text
+            accordian_title.click()
         except ElementClickInterceptedException:
             self.hide_ads()
             self.hide_image_ads()
             self.element_is_visible(accordian_title)
             accordian_title.click()
             accordian_content = self.element_is_visible(accordian[accordian_num]['content']).text
+            accordian_title.click()
         return [accordian_title.text, accordian_content]
