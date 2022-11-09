@@ -39,6 +39,11 @@ class BasePage:
     def go_to_element(self, locator):
         self.driver.execute_script("arguments[0].scrollIntoView();", locator)
 
+    def action_move_to_element(self, locator):
+        action = ActionChains(self.driver)
+        action.move_to_element(locator)
+        action.perform()
+
     def action_double_click(self, locator):
         action = ActionChains(self.driver)
         action.double_click(locator)
