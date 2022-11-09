@@ -2,6 +2,7 @@ import logging
 import inspect
 
 from selenium.webdriver import ActionChains
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -90,6 +91,10 @@ class BasePage:
 
     def go_to_default_content(self):
         self.driver.switch_to.default_content()
+
+    def select_option_by_text(self, locator, value):
+        select = Select(self.element_is_present(locator))
+        select.select_by_visible_text(value)
 
     @staticmethod
     def get_logger():
