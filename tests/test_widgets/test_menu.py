@@ -6,7 +6,7 @@ class TestMenu:
     def test_menu(self, driver):
         menu_page = MenuPage(driver, "https://demoqa.com/menu#")
         menu_page.open()
-        data = menu_page.check_menu()
+        result = menu_page.check_menu()
         expected_result = ['Main Item 1',
                            'Main Item 2',
                            'Sub Item',
@@ -15,4 +15,5 @@ class TestMenu:
                            'Sub Sub Item 1',
                            'Sub Sub Item 2',
                            'Main Item 3']
-        assert data == expected_result,
+        assert result == expected_result, f"\nActual result:\n\tNav items: {result}" \
+                                          f"\nExpected result:\n\tNav items should be: {expected_result}"
