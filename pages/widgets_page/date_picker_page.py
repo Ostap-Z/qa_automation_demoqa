@@ -1,5 +1,3 @@
-from selenium.webdriver.support.select import Select
-
 from pages.base_page import BasePage
 from locators.widgets_locators.date_picker_locators import DatePickerLocators
 from generator.generator import generated_date
