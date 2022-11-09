@@ -1,8 +1,11 @@
+import pytest
+
 from pages.widgets_page.tabs_page import TabsPage
 
 
 class TestTabs:
 
+    @pytest.mark.xfail(reason="There's a known bug - The more button tab is not clickable. So, the user can't see more tab content")
     def test_tabs(self, driver):
         tabs_page = TabsPage(driver, "https://demoqa.com/tabs")
         tabs_page.open()
