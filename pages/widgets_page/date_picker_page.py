@@ -21,10 +21,13 @@ class DatePickerPage(BasePage):
         return value_date_before, value_date_after
 
     def select_date_and_time(self):
+        log = self.get_logger()
         date = next(generated_date())
+        log.info(f"Generated date data: {date}")
         input_date_time = self.element_is_visible(self.locators.DATE_AND_TIME_INPUT)
         value_date_time_before = input_date_time.get_attribute("value")
         input_date_time.click()
+        log.info("Opened date time picker")
 
         self.set_date_item_from_list(self.locators.DATE_SELECT_DAY_LIST, date.day)
 
@@ -38,6 +41,7 @@ class DatePickerPage(BasePage):
 
         input_date_time_after = self.element_is_visible(self.locators.DATE_AND_TIME_INPUT)
         value_date_time_after = input_date_time_after.get_attribute("value")
+        log.info(f"Returned before and after values: {value_date_time_before}, {value_date_time_after}")
         return value_date_time_before, value_date_time_after
 
     def set_date_item_from_list(self, elements, value):

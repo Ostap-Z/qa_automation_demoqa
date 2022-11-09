@@ -20,4 +20,3 @@ class TestDatePicker:
             f"\nActual result:\n\tDate or time was not changed." \
             f"\n\tDate time values before: {date_time_value_before}\n\tDate time values after: {date_time_value_after}" \
             f"\nExpected result:\n\tDate should be changed. So, before and after values should be different."
-
