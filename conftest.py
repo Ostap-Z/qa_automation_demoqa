@@ -46,9 +46,13 @@ def driver(request):
             driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
     elif browser_name == "firefox":
-        firefox_options = FirefoxOptions()
-        firefox_options.headless = True
-        driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
+        if headless_mode == "yes":
+            firefox_options = FirefoxOptions()
+            firefox_options.headless = True
+            driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
+        else:
+            firefox_options = FirefoxOptions()
+            driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
 
     elif browser_name == "edge":
         edge_options = EdgeOptions()
