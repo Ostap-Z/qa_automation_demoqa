@@ -53,6 +53,7 @@ def driver(request):
         else:
             firefox_options = FirefoxOptions()
             driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
+            driver.maximize_window()
 
     elif browser_name == "edge":
         edge_options = EdgeOptions()
