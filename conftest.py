@@ -21,17 +21,29 @@ def pytest_addoption(parser):
         default="chrome",
         help="Choose browser: [Chrome, Firefox, Edge]"
     )
+    parser.addoption(
+        "--headless",
+        action="store",
+        default="yes",
+        help="Run tests in headless mode: yes, no"
+    )
 
 
 @pytest.fixture
 def driver(request):
     global driver
     browser_name = request.config.getoption("--browser_name").lower()
+    headless_mode = request.config.getoption("--headless").lower()
 
     if browser_name == "chrome":
-        chrome_options = ChromeOptions()
-        chrome_options.add_argument("headless")
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+        if headless_mode == "yes":
+            chrome_options = ChromeOptions()
+            chrome_options.add_argument("headless")
+            driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+        else:
+            chrome_options = ChromeOptions()
+            chrome_options.add_argument("start-maximized")
+            driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
     elif browser_name == "firefox":
         firefox_options = FirefoxOptions()
