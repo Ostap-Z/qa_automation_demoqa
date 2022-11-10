@@ -17,8 +17,13 @@ class ToolTipsPage(BasePage):
         return tool_tip_text
 
     def check_tool_tips(self):
+        log = self.get_logger()
         tool_tip_text_button = self.get_tool_tips_text(self.locators.HOVER_BUTTON, self.locators.TOOL_TIP_BUTTON)
+        log.info(f"Got tool tip text button: {tool_tip_text_button}")
         tool_tip_text_input = self.get_tool_tips_text(self.locators.HOVER_INPUT, self.locators.TOOL_TIP_INPUT)
+        log.info(f"Got tool tip text button: {tool_tip_text_input}")
         tool_tip_text_contrary = self.get_tool_tips_text(self.locators.HOVER_CONTRARY_LINK, self.locators.TOOL_TIP_CONTRARY)
+        log.info(f"Got tool tip text button: {tool_tip_text_contrary}")
         tool_tip_text_section = self.get_tool_tips_text(self.locators.HOVER_SECTION_LINK, self.locators.TOOL_TIP_SECTION)
+        log.info(f"Got tool tip text button: {tool_tip_text_section}")
         return tool_tip_text_button, tool_tip_text_input, tool_tip_text_contrary, tool_tip_text_section
