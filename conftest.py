@@ -51,14 +51,17 @@ def driver(request):
             firefox_options.headless = True
             driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
         else:
-            firefox_options = FirefoxOptions()
-            driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
+            driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
             driver.maximize_window()
 
     elif browser_name == "edge":
-        edge_options = EdgeOptions()
-        edge_options.add_argument("headless")
-        driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()), options=edge_options)
+        if headless_mode == "yes":
+            edge_options = EdgeOptions()
+            edge_options.add_argument("headless")
+            driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()), options=edge_options)
+        else:
+            driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
+            driver.maximize_window()
 
     yield driver
     driver.quit()
