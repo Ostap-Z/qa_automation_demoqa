@@ -17,15 +17,25 @@ class ResizablePage(BasePage):
         return size_value
 
     def change_size_large_resizable_box(self):
+        log = self.get_logger()
         self.action_drag_and_drop_by_offset(self.element_is_visible(self.locators.RESIZABLE_LARGE_BOX_HANDLE), 300, 200)
+        log.info("Dragged large resizable box")
         max_size = self.get_width_height(self.get_max_min_size(self.locators.RESIZABLE_LARGE_BOX))
+        log.info(f"Got max size of large resizable box: {max_size}")
         self.action_drag_and_drop_by_offset(self.element_is_visible(self.locators.RESIZABLE_LARGE_BOX_HANDLE), -350, -150)
+        log.info("Dragged large resizable box")
         min_size = self.get_width_height(self.get_max_min_size(self.locators.RESIZABLE_LARGE_BOX))
+        log.info(f"Got min size of large resizable box: {min_size}")
         return max_size, min_size
 
     def change_size_small_resizable_box(self):
+        log = self.get_logger()
         self.action_drag_and_drop_by_offset(self.element_is_visible(self.locators.RESIZABLE_SMALL_BOX_HANDLE), 350, 150)
+        log.info("Dragged small resizable box")
         max_size = self.get_width_height(self.get_max_min_size(self.locators.RESIZABLE_SMALL_BOX))
+        log.info(f"Got max size of small resizable box: {max_size}")
         self.action_drag_and_drop_by_offset(self.element_is_visible(self.locators.RESIZABLE_SMALL_BOX_HANDLE), -400, -300)
+        log.info("Dragged small resizable box")
         min_size = self.get_width_height(self.get_max_min_size(self.locators.RESIZABLE_SMALL_BOX))
+        log.info(f"Got min size of small resizable box: {min_size}")
         return max_size, min_size
