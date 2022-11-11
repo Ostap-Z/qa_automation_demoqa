@@ -1,5 +1,3 @@
-from random import randint
-
 from pages.base_page import BasePage
 from locators.interactions_locators.resizable_locators import ResizableLocators
 
