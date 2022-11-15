@@ -42,3 +42,18 @@ class TestDroppable:
         assert text_greedy_inner_box == "Dropped!", \
             f"\nActual result:\n\tA text has not been changed.\n\tActual text: {text_greedy_inner_box}" \
             f"\nExpected result:\n\tA text should be changed.\n\tExpected text: Outer droppable"
+
+    def test_revert_draggable_droppable(self, driver):
+        droppable_page = DroppablePage(driver, "https://demoqa.com/droppable")
+        droppable_page.open()
+        will_after_move, will_after_revert = droppable_page.drop_revert_draggable("will_revert")
+        not_will_after_move, not_will_after_revert = droppable_page.drop_revert_draggable("not_will_revert")
+        assert will_after_move != will_after_revert, \
+            f"\nActual result:\n\tPositions after move and after revert are equal." \
+            f"\n\tActual positions after_move, after_revert: {will_after_move}, {will_after_revert}" \
+            f"\nExpected result:\n\tPositions after move and after revert should not be equaled."
+
+        assert not_will_after_move == not_will_after_revert, \
+            f"\nActual result:\n\tPositions after move and after revert are not equal." \
+            f"\n\tActual positions after_move, after_revert: {not_will_after_move}, {not_will_after_revert}" \
+            f"\nExpected result:\n\tPositions after move and after revert should be equaled."
