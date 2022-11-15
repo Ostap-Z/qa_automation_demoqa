@@ -6,10 +6,15 @@ class DroppablePage(BasePage):
     locators = DroppableLocators()
 
     def drop_simple(self):
+        log = self.get_logger()
         self.element_is_visible(self.locators.SIMPLE_TAB).click()
+        log.info("Opened simple tab page")
         drag_div = self.element_is_visible(self.locators.SIMPLE_DRAG_ME)
         drop_div = self.element_is_visible(self.locators.SIMPLE_DROP_HERE)
         self.action_drag_and_drop_to_element(drag_div, drop_div)
+        log.info(f"Droppable info: source = {drag_div.text}, target = {drop_div.text}")
+        log.info(f"Dragged and dropped {drag_div.text} element to the target {drop_div.text}")
+        log.info(f"Returned text result: {drop_div.text}")
         return drop_div.text
 
     def drop_accept(self):
