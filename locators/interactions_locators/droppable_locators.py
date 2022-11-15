@@ -18,8 +18,8 @@ class DroppableLocators:
     PREVENT_DRAG_ME = (By.CSS_SELECTOR, "div#dragBox")
     PREVENT_NOT_GREEDY_DROP_BOX_TEXT = (By.CSS_SELECTOR, "div#notGreedyDropBox > p")
     PREVENT_NOT_GREEDY_INNER_BOX = (By.CSS_SELECTOR, "div#notGreedyInnerDropBox")
-    PREVENT_GREEDY_DROP_BOX_TEXT = (By.CSS_SELECTOR, "div#greedyDropBoxInner> p")
-    PREVENT_GREEDY_INNER_BOX = (By.CSS_SELECTOR, "div#greedyDropBox")
+    PREVENT_GREEDY_DROP_BOX_TEXT = (By.CSS_SELECTOR, "div#greedyDropBox > p")
+    PREVENT_GREEDY_INNER_BOX = (By.CSS_SELECTOR, "div#greedyDropBoxInner > p")
 
     # Locators for revert draggable
     REVERT_TAB = (By.CSS_SELECTOR, "nav.nav.nav-tabs > a#droppableExample-tab-revertable")
