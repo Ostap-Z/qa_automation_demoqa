@@ -24,13 +24,37 @@ class DroppablePage(BasePage):
         acceptable_div = self.element_is_visible(self.locators.ACCEPT_ACCEPTABLE)
         not_acceptable_div = self.element_is_visible(self.locators.ACCEPT_NOT_ACCEPTABLE)
         drop_div = self.element_is_visible(self.locators.ACCEPT_DROP_HERE)
+
         self.action_drag_and_drop_to_element(not_acceptable_div, drop_div)
         log.info(f"Droppable not acceptable info: source = {not_acceptable_div.text}, target = {drop_div.text}")
         log.info(f"Dragged and dropped {not_acceptable_div.text} element to the target {drop_div.text}")
         drop_text_not_acceptable = drop_div.text
+
         self.action_drag_and_drop_to_element(acceptable_div, drop_div)
         log.info(f"Droppable acceptable info: source = {acceptable_div.text}, target = {drop_div.text}")
         log.info(f"Dragged and dropped {acceptable_div.text} element to the target {drop_div.text}")
         drop_text_acceptable = drop_div.text
         log.info(f"Returned text results for not acceptable and acceptable: {not_acceptable_div.text}, {acceptable_div.text}")
         return drop_text_not_acceptable, drop_text_acceptable
+
+    def drop_prevent_propogation(self):
+        self.element_is_visible(self.locators.PREVENT_TAB).click()
+        drag_div = self.element_is_visible(self.locators.PREVENT_DRAG_ME)
+        not_greedy_inner_box = self.element_is_visible(self.locators.PREVENT_NOT_GREEDY_INNER_BOX)
+        greedy_inner_box = self.element_is_visible(self.locators.PREVENT_GREEDY_INNER_BOX)
+
+        self.action_drag_and_drop_to_element(drag_div, not_greedy_inner_box)
+        text_not_greedy_box = self.element_is_visible(self.locators.PREVENT_NOT_GREEDY_DROP_BOX_TEXT).text
+        text_not_greedy_inner_box = not_greedy_inner_box.text
+
+        self.action_drag_and_drop_to_element(drag_div, greedy_inner_box)
+        text_greedy_box = self.element_is_visible(self.locators.PREVENT_GREEDY_DROP_BOX_TEXT).text
+        text_greedy_inner_box = greedy_inner_box.text
+        return text_not_greedy_box, text_not_greedy_inner_box, text_greedy_box, text_greedy_inner_box
+
+
+
+
+
+
+
