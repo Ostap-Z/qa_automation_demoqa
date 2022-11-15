@@ -1,5 +1,3 @@
-import time
-
 from pages.interactions_page.droppable_page import DroppablePage
 
 
