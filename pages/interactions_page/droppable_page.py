@@ -27,7 +27,6 @@ class DroppablePage(BasePage):
         self.action_drag_and_drop_to_element(not_acceptable_div, drop_div)
         log.info(f"Droppable not acceptable info: source = {not_acceptable_div.text}, target = {drop_div.text}")
         log.info(f"Dragged and dropped {not_acceptable_div.text} element to the target {drop_div.text}")
-
         drop_text_not_acceptable = drop_div.text
         self.action_drag_and_drop_to_element(acceptable_div, drop_div)
         log.info(f"Droppable acceptable info: source = {acceptable_div.text}, target = {drop_div.text}")
