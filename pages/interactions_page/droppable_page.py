@@ -38,23 +38,24 @@ class DroppablePage(BasePage):
         return drop_text_not_acceptable, drop_text_acceptable
 
     def drop_prevent_propogation(self):
+        log = self.get_logger()
         self.element_is_visible(self.locators.PREVENT_TAB).click()
+        log.info("Opened prevent propogation droppable page")
         drag_div = self.element_is_visible(self.locators.PREVENT_DRAG_ME)
         not_greedy_inner_box = self.element_is_visible(self.locators.PREVENT_NOT_GREEDY_INNER_BOX)
         greedy_inner_box = self.element_is_visible(self.locators.PREVENT_GREEDY_INNER_BOX)
 
         self.action_drag_and_drop_to_element(drag_div, not_greedy_inner_box)
+        log.info(f"Droppable not greedy box info: source = {drag_div.text}, target = {not_greedy_inner_box.text}")
+        log.info(f"Dragged and dropped {drag_div.text} element to the target {not_greedy_inner_box.text}")
         text_not_greedy_box = self.element_is_visible(self.locators.PREVENT_NOT_GREEDY_DROP_BOX_TEXT).text
         text_not_greedy_inner_box = not_greedy_inner_box.text
+        log.info(f"Returned not greedy text for box, inner box: {text_not_greedy_box}, {text_not_greedy_inner_box}")
 
         self.action_drag_and_drop_to_element(drag_div, greedy_inner_box)
+        log.info(f"Droppable greedy box info: source = {drag_div.text}, target = {greedy_inner_box.text}")
+        log.info(f"Dragged and dropped {drag_div.text} element to the target {greedy_inner_box.text}")
         text_greedy_box = self.element_is_visible(self.locators.PREVENT_GREEDY_DROP_BOX_TEXT).text
         text_greedy_inner_box = greedy_inner_box.text
+        log.info(f"Returned greedy text for box, inner box: {text_greedy_box}, {text_greedy_inner_box}")
         return text_not_greedy_box, text_not_greedy_inner_box, text_greedy_box, text_greedy_inner_box
-
-
-
-
-
-
-
