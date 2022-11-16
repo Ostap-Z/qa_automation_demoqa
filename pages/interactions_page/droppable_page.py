@@ -63,6 +63,7 @@ class DroppablePage(BasePage):
         return text_not_greedy_box, text_not_greedy_inner_box, text_greedy_box, text_greedy_inner_box
 
     def drop_revert_draggable(self, drag_type):
+        log = self.get_logger()
         drags = {
             'will_revert': {
                 'revert': self.locators.REVERT_WILL_REVERT
@@ -72,11 +73,14 @@ class DroppablePage(BasePage):
             }
         }
         self.element_is_visible(self.locators.REVERT_TAB).click()
+        log.info("Opened revert draggable tab")
         revert = self.element_is_visible(drags[drag_type]["revert"])
         drop_div = self.element_is_visible(self.locators.REVERT_DROP_HERE)
-
+        log.info(f"Drag and drop info: {revert.text}, {drop_div.text}")
         self.action_drag_and_drop_to_element(revert, drop_div)
+        log.info(f"Dragged and dropped {revert.text} element to the target {drop_div.text}")
         position_after_move = revert.get_attribute("style")
         time.sleep(1)
         position_after_revert = revert.get_attribute("style")
+        log.info(f"Returned data: {position_after_move=}, {position_after_revert=}")
         return position_after_move, position_after_revert
