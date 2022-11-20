@@ -11,7 +11,9 @@ Faker.seed()
 
 def generated_person():
     yield Person(
-        full_name=f"{faker_ru.first_name()} {faker_ru.last_name()} {faker_ru.middle_name()}",
+        full_name=f"{faker_ru.first_name()}"
+                  f" {faker_ru.last_name()}"
+                  f" {faker_ru.middle_name()}",
         first_name=faker_ru.first_name(),
         last_name=faker_ru.last_name(),
         age=randint(0, 100),
@@ -25,7 +27,9 @@ def generated_person():
 
 
 def generated_file():
-    path = rf"C:\Users\OstapZherebetskyi\Desktop\test_examples\qa_automation_demo\qa_automation_demoqa\filetest{randint(0, 999)}.txt"
+    path = rf"C:\Users\OstapZherebetskyi\Desktop\test_examples\ \
+    qa_automation_demo\qa_automation_demoqa\ \
+    filetest{randint(0, 999)}.txt"
     with open(path, "w+") as file:
         file.write(f"Hello World")
 
@@ -34,7 +38,17 @@ def generated_file():
 
 def generated_color():
     yield Color(
-        color_name=["Red", "Blue", "Green", "Yellow", "Purple", "Black", "White", "Voilet", "Indigo", "Magenta", "Aqua"]
+        color_name=["Red",
+                    "Blue",
+                    "Green",
+                    "Yellow",
+                    "Purple",
+                    "Black",
+                    "White",
+                    "Voilet",
+                    "Indigo",
+                    "Magenta",
+                    "Aqua"]
     )
 
 
