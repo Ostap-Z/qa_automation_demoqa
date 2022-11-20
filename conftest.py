@@ -39,28 +39,44 @@ def driver(request):
         if headless_mode == "yes":
             chrome_options = ChromeOptions()
             chrome_options.add_argument("headless")
-            driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+            driver = webdriver.Chrome(
+                service=ChromeService(
+                    ChromeDriverManager().install()),
+                options=chrome_options)
         else:
             chrome_options = ChromeOptions()
             chrome_options.add_argument("start-maximized")
-            driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+            driver = webdriver.Chrome(
+                service=ChromeService(
+                    ChromeDriverManager().install()),
+                options=chrome_options)
 
     elif browser_name == "firefox":
         if headless_mode == "yes":
             firefox_options = FirefoxOptions()
             firefox_options.headless = True
-            driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
+            driver = webdriver.Firefox(
+                service=FirefoxService(
+                    GeckoDriverManager().install()),
+                options=firefox_options)
         else:
-            driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+            driver = webdriver.Firefox(
+                service=FirefoxService(
+                    GeckoDriverManager().install()))
             driver.maximize_window()
 
     elif browser_name == "edge":
         if headless_mode == "yes":
             edge_options = EdgeOptions()
             edge_options.add_argument("headless")
-            driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()), options=edge_options)
+            driver = webdriver.Edge(
+                service=EdgeService(
+                    EdgeChromiumDriverManager().install()),
+                options=edge_options)
         else:
-            driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
+            driver = webdriver.Edge(
+                service=EdgeService(
+                    EdgeChromiumDriverManager().install()))
             driver.maximize_window()
 
     yield driver
@@ -76,12 +92,15 @@ def pytest_runtest_makereport(item):
 
     if report.when == 'call' or report.when == "driver":
         xfail = hasattr(report, 'wasxfail')
-        if (report.skipped and xfail) or (report.failed and not xfail):
+        if (report.skipped and xfail) \
+           or (report.failed and not xfail):
             file_name = report.nodeid.replace("::", "_") + ".png"
             _capture_screenshot(file_name)
             if file_name:
-                html = f'<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
-                       'onclick="window.open(this.src)" align="right"/></div>' % file_name
+                html = f'<div><img src="%s" alt="screenshot" ' \
+                       f'style="width:304px;height:228px;" ' \
+                       'onclick="window.open(this.src)" ' \
+                       'align="right"/></div>' % file_name
                 extra.append(pytest_html.extras.html(html))
         report.extra = extra
 
