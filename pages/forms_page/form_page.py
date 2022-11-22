@@ -16,21 +16,31 @@ class FormPage(BasePage):
         file_name, path = generated_file()
         self.hide_ads()
         self.remove_footer()
-        self.element_is_visible(self.locators.FIRST_NAME).send_keys(person.first_name)
-        self.element_is_visible(self.locators.LAST_NAME).send_keys(person.last_name)
-        self.element_is_visible(self.locators.EMAIL).send_keys(person.email)
+        self.element_is_visible(self.locators.FIRST_NAME).\
+            send_keys(person.first_name)
+        self.element_is_visible(self.locators.LAST_NAME).\
+            send_keys(person.last_name)
+        self.element_is_visible(self.locators.EMAIL).\
+            send_keys(person.email)
         self.element_is_visible(self.locators.GENDER).click()
-        self.element_is_visible(self.locators.MOBILE).send_keys(person.mobile)
-        self.element_is_visible(self.locators.SUBJECT).send_keys("Maths")
-        self.element_is_visible(self.locators.SUBJECT).send_keys(Keys.RETURN)
+        self.element_is_visible(self.locators.MOBILE).\
+            send_keys(person.mobile)
+        self.element_is_visible(self.locators.SUBJECT).\
+            send_keys("Maths")
+        self.element_is_visible(self.locators.SUBJECT).\
+            send_keys(Keys.RETURN)
         self.element_is_visible(self.locators.HOBBIES).click()
-        self.element_is_present(self.locators.FILE_INPUT).send_keys(path)
+        self.element_is_present(self.locators.FILE_INPUT).\
+            send_keys(path)
         self.remove_file(path)
-        self.element_is_visible(self.locators.CURRENT_ADDRESS).send_keys(person.current_address)
+        self.element_is_visible(self.locators.CURRENT_ADDRESS).\
+            send_keys(person.current_address)
         self.element_is_visible(self.locators.SELECT_STATE).click()
-        self.element_is_visible(self.locators.STATE_INPUT).send_keys(Keys.RETURN)
+        self.element_is_visible(self.locators.STATE_INPUT).\
+            send_keys(Keys.RETURN)
         self.element_is_visible(self.locators.SELECT_CITY).click()
-        self.element_is_visible(self.locators.CITY_INPUT).send_keys(Keys.RETURN)
+        self.element_is_visible(self.locators.CITY_INPUT).\
+            send_keys(Keys.RETURN)
         self.hide_ads()
         self.element_is_visible(self.locators.SUBMIT_BUTTON).click()
         log.info(f"Filled in form with data: {person}")
