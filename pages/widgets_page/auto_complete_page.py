@@ -12,10 +12,14 @@ class AutoCompletePage(BasePage):
 
     def fill_multiple_input(self):
         log = self.get_logger()
-        colors = sample(next(generated_color()).color_name, k=randint(2, 6))
+        colors = sample(next(
+            generated_color()).color_name,
+                        k=randint(2, 6)
+                        )
         log.info(f"Generated colors: {colors}")
         for color in colors:
-            multiple_input = self.element_is_clickable(self.locators.MULTIPLE_INPUT)
+            multiple_input = self.element_is_clickable(
+                self.locators.MULTIPLE_INPUT)
             multiple_input.send_keys(color)
             multiple_input.send_keys(Keys.ENTER)
             log.info(f"Filled in field with value: {color}")
@@ -24,28 +28,36 @@ class AutoCompletePage(BasePage):
 
     def remove_multiple_value(self):
         log = self.get_logger()
-        count_value_before = len(self.elements_are_present(self.locators.MULTIPLE_VALUE))
-        remove_button_list = self.elements_are_visible(self.locators.MULTIPLE_VALUE_REMOVE)
+        count_value_before = len(self.elements_are_present(
+            self.locators.MULTIPLE_VALUE))
+        remove_button_list = self.elements_are_visible(
+            self.locators.MULTIPLE_VALUE_REMOVE)
         for value in remove_button_list:
             value.click()
             log.info(f"Removed value from color list")
             break
-        count_value_after = len(self.elements_are_present(self.locators.MULTIPLE_VALUE))
-        log.info(f"Count of values before, after: {count_value_before}, {count_value_after}")
+        count_value_after = len(self.elements_are_present(
+            self.locators.MULTIPLE_VALUE))
+        log.info(f"Count of values before, after: "
+                 f"{count_value_before}, "
+                 f"{count_value_after}")
         return count_value_before, count_value_after
 
     def check_multiple_values(self):
         log = self.get_logger()
-        color_list = self.elements_are_present(self.locators.MULTIPLE_VALUE)
+        color_list = self.elements_are_present(
+            self.locators.MULTIPLE_VALUE)
         colors = [color.text for color in color_list]
         log.info(f"Returned colors: {colors} ")
         return colors
 
     def fill_single_input(self):
         log = self.get_logger()
-        color = sample(next(generated_color()).color_name, k=1)
+        color = sample(next(
+            generated_color()).color_name, k=1)
         log.info(f"Generated color: {color}")
-        single_input = self.element_is_clickable(self.locators.SINGLE_INPUT)
+        single_input = self.element_is_clickable(
+            self.locators.SINGLE_INPUT)
         single_input.send_keys(color)
         single_input.send_keys(Keys.ENTER)
         log.info(f"Filled in single input with data: {color}")
@@ -53,6 +65,7 @@ class AutoCompletePage(BasePage):
 
     def check_single_value(self):
         log = self.get_logger()
-        color = self.element_is_visible(self.locators.SINGLE_VALUE)
+        color = self.element_is_visible(
+            self.locators.SINGLE_VALUE)
         log.info(f"Returned color: '{color.text}'")
         return color.text

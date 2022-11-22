@@ -24,17 +24,20 @@ class AccordianPage(BasePage):
             }
         }
         self.hide_ads()
-        accordian_title = self.element_is_visible(accordian[accordian_num]['title'])
+        accordian_title = self.element_is_visible(
+            accordian[accordian_num]['title'])
         log.info("Accordian title is visible on the page")
         accordian_title.click()
         log.info("Opened accordian title section")
         try:
-            accordian_content = self.element_is_visible(accordian[accordian_num]['content']).text
+            accordian_content = self.element_is_visible(
+                accordian[accordian_num]['content']).text
             log.info(f"Get accordian content: {accordian_content}")
         except TimeoutException:
             accordian_title.click()
             log.info("Opened accordian title section")
-            accordian_content = self.element_is_visible(accordian[accordian_num]['content']).text
+            accordian_content = self.element_is_visible(
+                accordian[accordian_num]['content']).text
             log.info(f"Get accordian content: {accordian_content}")
             accordian_title.click()
             log.info("Closed accordian title section")
@@ -45,9 +48,11 @@ class AccordianPage(BasePage):
             log.info("Accordian title is visible on the page")
             accordian_title.click()
             log.info("Opened accordian title section")
-            accordian_content = self.element_is_visible(accordian[accordian_num]['content']).text
+            accordian_content = self.element_is_visible(
+                accordian[accordian_num]['content']).text
             log.info(f"Get accordian content: {accordian_content}")
             accordian_title.click()
             log.info("Closed accordian title section")
-        log.info(f"Returned title, content: {accordian_title.text}\n{accordian_content}")
+        log.info(f"Returned title, content: {accordian_title.text}"
+                 f"\n{accordian_content}")
         return [accordian_title.text, accordian_content]

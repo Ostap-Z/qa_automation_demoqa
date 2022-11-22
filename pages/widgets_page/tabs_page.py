@@ -25,10 +25,13 @@ class TabsPage(BasePage):
                 "content": self.locators.MORE_CONTENT
             }
         }
-        tab_button = self.element_is_visible(tab[tab_name]["button"])
+        tab_button = self.element_is_visible(
+            tab[tab_name]["button"])
         tab_button.click()
         log.info(f"Opened {tab_button.text} tab")
-        tab_content = self.element_is_visible(tab[tab_name]["content"]).text
+        tab_content = self.element_is_visible(
+            tab[tab_name]["content"]).text
         log.info(f"Got {tab_button.text} content data: {tab_content}")
-        log.info(f"Returned data: {tab_button.text}, {len(tab_content)}")
+        log.info(f"Returned data: {tab_button.text}, "
+                 f"{len(tab_content)}")
         return tab_button.text, len(tab_content)

@@ -10,11 +10,22 @@ class SliderPage(BasePage):
 
     def change_slider_value(self):
         log = self.get_logger()
-        value_before = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        value_before = \
+            self.element_is_visible(
+                self.locators.SLIDER_VALUE).get_attribute(
+                'value')
         log.info(f"Slider value before: {value_before}")
-        slider_input = self.element_is_visible(self.locators.SLIDER_INPUT)
-        self.action_drag_and_drop_by_offset(slider_input, randint(0, 100), 0)
-        value_after = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        slider_input = self.element_is_visible(
+            self.locators.SLIDER_INPUT)
+        self.action_drag_and_drop_by_offset(
+            slider_input,
+            randint(0, 100),
+            0
+        )
+        value_after = self.element_is_visible(
+            self.locators.SLIDER_VALUE).get_attribute('value')
         log.info(f"Dragged slider to the value: {value_after}")
-        log.info(f"Returned values before, after: {value_before}, {value_after}")
+        log.info(f"Returned values before, after: "
+                 f"{value_before}, "
+                 f"{value_after}")
         return value_before, value_after

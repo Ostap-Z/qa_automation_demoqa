@@ -7,7 +7,8 @@ class MenuPage(BasePage):
 
     def check_menu(self):
         log = self.get_logger()
-        menu_item_list = self.elements_are_present(self.locators.MENU_ITEMS_LIST)
+        menu_item_list = self.elements_are_present(
+            self.locators.MENU_ITEMS_LIST)
         data = []
         for item in menu_item_list:
             self.action_move_to_element(item)
