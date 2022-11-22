@@ -13,12 +13,15 @@ class SelectablePage(BasePage):
 
     def select_list_item(self):
         log = self.get_logger()
-        self.element_is_visible(self.locators.TAB_LIST).click()
+        self.element_is_visible(
+            self.locators.TAB_LIST).click()
         log.info(f"Opened LIST tab")
         self.click_selectable_item(self.locators.LIST_ITEMS)
-        active_element = self.element_is_visible(self.locators.LIST_ITEM_ACTIVE).text
+        active_element = self.element_is_visible(
+            self.locators.LIST_ITEM_ACTIVE).text
         log.info(f"Selected list item: {active_element}")
-        log.info(f"Length of selected list item: {len(active_element)}")
+        log.info(f"Length of selected list item: "
+                 f"{len(active_element)}")
         return active_element
 
     def select_grid_item(self):
@@ -26,7 +29,9 @@ class SelectablePage(BasePage):
         self.element_is_visible(self.locators.TAB_GRID).click()
         log.info(f"Opened GRID tab")
         self.click_selectable_item(self.locators.GRID_ITEMS)
-        active_element = self.element_is_visible(self.locators.GRID_ITEM_ACTIVE).text
+        active_element = self.element_is_visible(
+            self.locators.GRID_ITEM_ACTIVE).text
         log.info(f"Selected grid item: {active_element}")
-        log.info(f"Length of selected grid item: {len(active_element)}")
+        log.info(f"Length of selected grid item: "
+                 f"{len(active_element)}")
         return active_element
