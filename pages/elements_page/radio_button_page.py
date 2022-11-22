@@ -16,6 +16,8 @@ class RadioButtonPage(BasePage):
 
     def output_result(self):
         log = self.get_logger()
-        result = self.element_is_present(self.locators.OUTPUT_RESULT).text
-        log.info(f"Clicked radio button displayed in the output result: {result}")
+        result = self.element_is_present(
+            self.locators.OUTPUT_RESULT).text
+        log.info(f"Clicked radio button displayed in the output result: "
+                 f"{result}")
         return result

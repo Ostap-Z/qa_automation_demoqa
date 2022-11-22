@@ -9,12 +9,14 @@ class CheckBoxPage(BasePage):
 
     def open_full_list(self):
         log = self.get_logger()
-        self.element_is_visible(self.locators.EXPAND_ALL_BUTTON).click()
+        self.element_is_visible(
+            self.locators.EXPAND_ALL_BUTTON).click()
         log.info("Opened full list of checkboxes")
 
     def click_random_check_box(self):
         log = self.get_logger()
-        item_list = self.elements_are_visible(self.locators.CHECK_BOXES_ITEM_LIST)
+        item_list = self.elements_are_visible(
+            self.locators.CHECK_BOXES_ITEM_LIST)
 
         log.info(f"I'm gonna click 10 times on the random items")
         count = 10
@@ -30,7 +32,8 @@ class CheckBoxPage(BasePage):
 
     def get_checked_checkboxes(self):
         log = self.get_logger()
-        checked_list = self.elements_are_present(self.locators.CHECKED_ITEMS_LIST)
+        checked_list = self.elements_are_present(
+            self.locators.CHECKED_ITEMS_LIST)
         data = []
         for box in checked_list:
             title_item = box.find_element(*self.locators.TITLE_ITEM)
@@ -40,7 +43,9 @@ class CheckBoxPage(BasePage):
 
     def get_output_result(self):
         log = self.get_logger()
-        result_list = self.elements_are_present(self.locators.OUTPUT_RESULT)
+        result_list = self.elements_are_present(
+            self.locators.OUTPUT_RESULT)
         data = [item.text for item in result_list]
-        log.info(f"List of checked checkboxes in the result output: {data}")
+        log.info(f"List of checked checkboxes in the result output: "
+                 f"{data}")
         return str(data).replace(" ", "").lower()

@@ -9,14 +9,16 @@ class LinksPage(BasePage):
 
     def check_new_tab_simple_link(self):
         log = self.get_logger()
-        simple_link = self.element_is_visible(self.locators.SIMPLE_LINK)
+        simple_link = \
+            self.element_is_visible(self.locators.SIMPLE_LINK)
         link_href = simple_link.get_attribute("href")
         request = requests.get(link_href)
 
         if request.status_code == 200:
             simple_link.click()
             log.info("Clicked on the simple link")
-            self.driver.switch_to.window(self.driver.window_handles[1])
+            self.driver.switch_to.window(
+                self.driver.window_handles[1])
             url = self.driver.current_url
             log.info(f"Current url: {url}")
             log.info(f"Link href: {link_href}")
@@ -32,7 +34,8 @@ class LinksPage(BasePage):
         request = requests.get(url)
 
         if request.status_code == 200:
-            self.element_is_present(self.locators.BAD_REQUEST_LINK).click()
+            self.element_is_present(
+                self.locators.BAD_REQUEST_LINK).click()
             log.info("Clicked on the bad request link")
             log.info(f"Status code: {request.status_code}")
         else:
