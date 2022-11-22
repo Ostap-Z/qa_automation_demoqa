@@ -27,9 +27,7 @@ def generated_person():
 
 
 def generated_file():
-    path = rf"C:\Users\OstapZherebetskyi\Desktop\test_examples\ \
-    qa_automation_demo\qa_automation_demoqa\ \
-    filetest{randint(0, 999)}.txt"
+    path = rf"C:\Users\OstapZherebetskyi\Desktop\test_examples\qa_automation_demo\qa_automation_demoqa\filetest{randint(0, 999)}.txt"
     with open(path, "w+") as file:
         file.write(f"Hello World")
 
