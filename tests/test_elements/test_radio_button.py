@@ -1,10 +1,14 @@
+import allure
 import pytest
 
 from pages.elements_page.radio_button_page import RadioButtonPage
 
 
+@allure.suite("Elements suite")
+@allure.feature("Radio buttons page")
 class TestRadioButton:
 
+    @allure.title("Check radio buttons")
     @pytest.mark.xfail(
         reason="There's a known bug "
                "that the user can't choose 'No' button"

@@ -1,8 +1,13 @@
+import allure
+
 from pages.elements_page.buttons_page import ButtonsPage
 
 
+@allure.suite("Elements suite")
+@allure.feature("Buttons page")
 class TestButtons:
 
+    @allure.title("Check clicks on different button types")
     def test_different_click_on_the_buttons(self, driver):
         buttons_page = ButtonsPage(
             driver,

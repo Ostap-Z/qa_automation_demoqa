@@ -1,3 +1,4 @@
+import allure
 import requests
 
 from pages.base_page import BasePage
@@ -7,6 +8,7 @@ from locators.elements_locators.links_locators import LinksPageLocators
 class LinksPage(BasePage):
     locators = LinksPageLocators()
 
+    @allure.step("Check simple new tab")
     def check_new_tab_simple_link(self):
         log = self.get_logger()
         simple_link = \
@@ -17,8 +19,9 @@ class LinksPage(BasePage):
         if request.status_code == 200:
             simple_link.click()
             log.info("Clicked on the simple link")
-            self.driver.switch_to.window(
-                self.driver.window_handles[1])
+            with allure.step("Switch to the new tab"):
+                self.driver.switch_to.window(
+                    self.driver.window_handles[1])
             url = self.driver.current_url
             log.info(f"Current url: {url}")
             log.info(f"Link href: {link_href}")
@@ -29,6 +32,7 @@ class LinksPage(BasePage):
             log.info(f"Status code: {request.status_code}")
             return link_href, request.status_code
 
+    @allure.step("Check broken link")
     def check_broken_link(self, url):
         log = self.get_logger()
         request = requests.get(url)

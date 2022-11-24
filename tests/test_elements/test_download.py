@@ -1,8 +1,13 @@
+import allure
+
 from pages.elements_page.download_page import DownloadPage
 
 
+@allure.suite("Elements suite")
+@allure.feature("Download page")
 class TestDownload:
 
+    @allure.title("Check download a file")
     def test_download(self, driver):
         download_page = DownloadPage(
             driver,

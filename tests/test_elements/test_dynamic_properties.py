@@ -1,8 +1,13 @@
+import allure
+
 from pages.elements_page.dynamic_properties_page import DynamicPropertiesPage
 
 
+@allure.suite("Elements suite")
+@allure.feature("Dynamic Properties page")
 class TestDynamicProperties:
 
+    @allure.title("Check enable button")
     def test_dynamic_properties_enable_button(self, driver):
         dynamic_properties = DynamicPropertiesPage(
             driver,
@@ -16,6 +21,7 @@ class TestDynamicProperties:
             f"\nExpected result: " \
             f"appear_button should be clickable (True) after 5 seconds"
 
+    @allure.title("Check change color")
     def test_dynamic_properties_change_color(self, driver):
         dynamic_properties = DynamicPropertiesPage(
             driver,
@@ -29,6 +35,7 @@ class TestDynamicProperties:
             f"\nActual coloc before: {color_before}" \
             f"\nActual color after: {color_after}"
 
+    @allure.title("Check appear button")
     def test_dynamic_properties_appear_button(self, driver):
         dynamic_properties = DynamicPropertiesPage(
             driver,

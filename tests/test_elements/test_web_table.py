@@ -1,12 +1,16 @@
 from random import randint
 
+import allure
 import pytest
 
 from pages.elements_page.web_table_page import WebTablePage
 
 
+@allure.suite("Elements suite")
+@allure.feature("Web Table page")
 class TestWebTable:
 
+    @allure.title("Check add person to the table")
     def test_web_table_add_person(self, driver):
         web_table_page = WebTablePage(
             driver,
@@ -21,6 +25,7 @@ class TestWebTable:
             f"\nExpected result: " \
             f"{new_person} should be in the {table_result}"
 
+    @allure.title("Check search a person in the table")
     def test_web_table_search_person(self, driver):
         web_table_page = WebTablePage(
             driver,
@@ -36,6 +41,7 @@ class TestWebTable:
             f"\nExpected result: " \
             f"{key_word} should be in the table {table_result}"
 
+    @allure.title("Check edit person table")
     def test_web_table_edit_person(self, driver):
         web_table_page = WebTablePage(
             driver,
@@ -50,6 +56,7 @@ class TestWebTable:
             f"Actual result: {age} is not present in the {row}" \
             f"Expected result: {age} should be present in the {row}"
 
+    @allure.title("Check delete a person from the table")
     def test_web_table_delete_person(self, driver):
         web_table_page = WebTablePage(
             driver,
@@ -62,6 +69,7 @@ class TestWebTable:
         deleted_text = web_table_page.check_deleted_person()
         assert deleted_text == "No rows found"
 
+    @allure.title("Check changing amount of table rows")
     @pytest.mark.xfail(
         reason="Expected failed due to there is a bug - "
                "the user can't see count_rows dropdown "

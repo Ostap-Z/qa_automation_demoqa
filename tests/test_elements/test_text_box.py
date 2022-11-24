@@ -1,10 +1,14 @@
+import allure
 import pytest
 
 from pages.elements_page.text_box_page import TextBoxPage
 
 
+@allure.suite("Elements suite")
+@allure.feature("Text Box page")
 class TestTextBox:
 
+    @allure.title("Check the form")
     @pytest.mark.xfail(
         reason="Expected failed due to "
                "returns empty strings instead of "
