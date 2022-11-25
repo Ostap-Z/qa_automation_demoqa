@@ -1,8 +1,16 @@
+import allure
+
 from pages.alerts_frame_windows_page.modal_dialogs_page import ModalDialogsPage
 
 
+@allure.suite("Alerts, frames and windows suite")
+@allure.feature("Alerts page")
 class TestModalDialogs:
 
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "open the 'Small' modal dialog and see a text there"
+    )
     def test_small_modal_dialog(self, driver):
         modal_dialogs_page = ModalDialogsPage(
             driver,
@@ -21,6 +29,10 @@ class TestModalDialogs:
             f"'{small_modal[1]}'"\
             "Expected result: small modal text length should be > 0"
 
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "open the 'Large' modal dialog and see a text there"
+    )
     def test_large_modal_dialog(self, driver):
         modal_dialogs_page = ModalDialogsPage(
             driver,

@@ -1,8 +1,17 @@
+import allure
+
 from pages.alerts_frame_windows_page.nested_frames_page import NestedFramesPage
 
 
+@allure.suite("Alerts, frames and windows suite")
+@allure.feature("Nested Frames page")
 class TestNestedFrames:
 
+    @allure.title(
+        "Verify that nested frames are active "
+        "on the 'Nested Frames' page "
+        "and frame text equals to the expected result"
+    )
     def test_nested_frames(self, driver):
         nested_frames_page = NestedFramesPage(
             driver,

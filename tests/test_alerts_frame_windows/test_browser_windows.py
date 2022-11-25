@@ -1,10 +1,15 @@
-import time
+import allure
 
 from pages.alerts_frame_windows_page.browser_windows_page import BrowserWindowsPage
 
 
+@allure.suite("Alerts, frames and windows suite")
+@allure.feature("Browser Windows page")
 class TestBrowserWindows:
 
+    @allure.title(
+        "Verify that a 'New Tab' opens"
+    )
     def test_new_tab(self, driver):
         new_tab_page = BrowserWindowsPage(
             driver,
@@ -16,6 +21,9 @@ class TestBrowserWindows:
             f"Actual result: {text_result}" \
             "Expected result: This is a sample page"
 
+    @allure.title(
+        "Verify that a 'New Window' opens"
+    )
     def test_new_window(self, driver):
         new_window_page = BrowserWindowsPage(
             driver,

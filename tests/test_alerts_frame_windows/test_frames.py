@@ -1,8 +1,15 @@
+import allure
+
 from pages.alerts_frame_windows_page.frames_page import FramesPage
 
 
+@allure.suite("Alerts, frames and windows suite")
+@allure.feature("Frames page")
 class TestFrames:
 
+    @allure.title(
+        "Verify that both frames are active on the 'Frames' page"
+    )
     def test_frames(self, driver):
         frames_page = FramesPage(
             driver,
