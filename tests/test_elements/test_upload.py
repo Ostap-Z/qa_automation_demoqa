@@ -7,7 +7,9 @@ from pages.elements_page.upload_page import UploadPage
 @allure.feature("Upload page")
 class TestUpload:
 
-    @allure.title("Check upload file")
+    @allure.title(
+        "Verify that the user has an opportunity to upload a file"
+    )
     def test_upload_file(self, driver):
         upload_page = UploadPage(
             driver,

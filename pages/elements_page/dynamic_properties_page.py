@@ -10,7 +10,7 @@ from locators.elements_locators.dynamic_properties_locators import DynamicProper
 class DynamicPropertiesPage(BasePage):
     locators = DynamicPropertiesLocators()
 
-    @allure.step("Check if button is clickable after 5 seconds")
+    @allure.step("Check the 'Enable' button")
     def check_enable_button(self):
         log = self.get_logger()
         try:
@@ -21,7 +21,7 @@ class DynamicPropertiesPage(BasePage):
             return False
         return True
 
-    @allure.step("Check if color is different in 5 seconds")
+    @allure.step("Check the 'Change Color' button")
     def check_changed_color(self):
         log = self.get_logger()
         color_button = self.element_is_present(
@@ -37,7 +37,7 @@ class DynamicPropertiesPage(BasePage):
         log.info(f"Color button after: {color_button_after}")
         return color_button_before, color_button_after
 
-    @allure.step("Check if button is visible after 5 seconds")
+    @allure.step("Check the 'Visible After' button")
     def check_appear_button(self):
         log = self.get_logger()
         try:

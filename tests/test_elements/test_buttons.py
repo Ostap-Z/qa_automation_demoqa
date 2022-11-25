@@ -7,7 +7,11 @@ from pages.elements_page.buttons_page import ButtonsPage
 @allure.feature("Buttons page")
 class TestButtons:
 
-    @allure.title("Check clicks on different button types")
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to do action with each button presented "
+        "on the 'Buttons' page"
+    )
     def test_different_click_on_the_buttons(self, driver):
         buttons_page = ButtonsPage(
             driver,

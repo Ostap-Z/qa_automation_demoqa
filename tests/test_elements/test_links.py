@@ -7,7 +7,9 @@ from pages.elements_page.links_page import LinksPage
 @allure.feature("Links page")
 class TestLinks:
 
-    @allure.title("Check simple link")
+    @allure.title(
+        "Verify that new tab opens with correct url"
+    )
     def test_check_link(self, driver):
         links_page = LinksPage(
             driver,
@@ -20,7 +22,10 @@ class TestLinks:
             f"\nActual result: {current_url}" \
             f"\nExpected result: {href_link}"
 
-    @allure.title("Check broken link")
+    @allure.title(
+        "Verify that a response code of the "
+        "'Broken Link' is 400"
+    )
     def test_broken_link(self, driver):
         links_page = LinksPage(
             driver,

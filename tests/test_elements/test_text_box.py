@@ -8,7 +8,10 @@ from pages.elements_page.text_box_page import TextBoxPage
 @allure.feature("Text Box page")
 class TestTextBox:
 
-    @allure.title("Check the form")
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to filled in registration form"
+    )
     @pytest.mark.xfail(
         reason="Expected failed due to "
                "returns empty strings instead of "

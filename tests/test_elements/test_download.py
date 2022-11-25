@@ -7,7 +7,10 @@ from pages.elements_page.download_page import DownloadPage
 @allure.feature("Download page")
 class TestDownload:
 
-    @allure.title("Check download a file")
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to download a file"
+    )
     def test_download(self, driver):
         download_page = DownloadPage(
             driver,

@@ -19,14 +19,10 @@ class UploadPage(BasePage):
         with allure.step(f"Upload a generated file: {file_name}, {path}"):
             self.element_is_present(
                 self.locators.UPLOAD_FILE).send_keys(path)
-
         log.info(f"Uploaded a file {file_name}")
+
         self.remove_file(path)
         log.info(f"Removed a file {file_name} from project directory")
-        # result_text = self.element_is_present(
-        #     self.locators.UPLOADED_RESULT
-        # ).text.split("\\")[-1]
-        # return file_name.split("\\")[-1], self.uploaded_result()
         return file_name.split("\\")[-1]
 
     @allure.step("Get uploaded result presented as file name in the paragraph")

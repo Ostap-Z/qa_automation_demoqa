@@ -10,7 +10,10 @@ from pages.elements_page.web_table_page import WebTablePage
 @allure.feature("Web Table page")
 class TestWebTable:
 
-    @allure.title("Check add person to the table")
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to add a new person to the table"
+    )
     def test_web_table_add_person(self, driver):
         web_table_page = WebTablePage(
             driver,
@@ -25,7 +28,10 @@ class TestWebTable:
             f"\nExpected result: " \
             f"{new_person} should be in the {table_result}"
 
-    @allure.title("Check search a person in the table")
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "find a person in the table by key word"
+    )
     def test_web_table_search_person(self, driver):
         web_table_page = WebTablePage(
             driver,
@@ -41,7 +47,10 @@ class TestWebTable:
             f"\nExpected result: " \
             f"{key_word} should be in the table {table_result}"
 
-    @allure.title("Check edit person table")
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "update a person info"
+    )
     def test_web_table_edit_person(self, driver):
         web_table_page = WebTablePage(
             driver,
@@ -56,7 +65,10 @@ class TestWebTable:
             f"Actual result: {age} is not present in the {row}" \
             f"Expected result: {age} should be present in the {row}"
 
-    @allure.title("Check delete a person from the table")
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "delete a person from the table"
+    )
     def test_web_table_delete_person(self, driver):
         web_table_page = WebTablePage(
             driver,
@@ -69,7 +81,11 @@ class TestWebTable:
         deleted_text = web_table_page.check_deleted_person()
         assert deleted_text == "No rows found"
 
-    @allure.title("Check changing amount of table rows")
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "set different amount of table rows: "
+        "[5, 10, 20, 25, 50, 100]"
+    )
     @pytest.mark.xfail(
         reason="Expected failed due to there is a bug - "
                "the user can't see count_rows dropdown "

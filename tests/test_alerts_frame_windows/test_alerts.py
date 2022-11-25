@@ -1,8 +1,15 @@
+import allure
+
 from pages.alerts_frame_windows_page.alerts_page import AlertsPage
 
 
+@allure.suite("Alerts, frames and windows suite")
+@allure.feature("Alerts page")
 class TestAlerts:
 
+    @allure.title(
+        "Verify that a 'Default Alert' opens"
+    )
     def test_default_alert(self, driver):
         alert_page = AlertsPage(
             driver,
@@ -16,6 +23,10 @@ class TestAlerts:
             "\nExpected result: " \
             "alert should be presented with text 'You clicked a button'"
 
+    @allure.title(
+        "Verify that the 'Timer Alert' opens "
+        "after 5 seconds of expectation"
+    )
     def test_timer_alert(self, driver):
         alert_page = AlertsPage(
             driver,
@@ -29,6 +40,10 @@ class TestAlerts:
             "\nExpected result: alert should be presented with text" \
             " 'This alert appeared after 5 seconds'"
 
+    @allure.title(
+        "Verify that a user has an opportunity to "
+        "confirm the 'Confirm Alert'"
+    )
     def test_confirm_alert(self, driver):
         alert_page = AlertsPage(
             driver,
@@ -42,6 +57,10 @@ class TestAlerts:
             "\nExpected result: message 'ok' should be shown" \
             " after the alert confirmation"
 
+    @allure.title(
+        "Verify that a user has an opportunity to "
+        "enter a text and confirm the 'Prompt Alert'"
+    )
     def test_prompt_alert(self, driver):
         alert_page = AlertsPage(
             driver,

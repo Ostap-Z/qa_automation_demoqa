@@ -7,7 +7,10 @@ from pages.elements_page.check_box_page import CheckBoxPage
 @allure.feature("Checkboxes page")
 class TestCheckBox:
 
-    @allure.title("Check the checkbox")
+    @allure.title(
+        "Verify that chosen checkboxes"
+        " is presented in the output result"
+    )
     def test_check_box(self, driver):
         check_box_page = CheckBoxPage(
             driver,
