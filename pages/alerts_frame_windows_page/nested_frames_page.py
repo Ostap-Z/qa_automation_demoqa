@@ -7,7 +7,9 @@ from locators.alerts_frame_windows_locators.nested_frames_locators import Nested
 class NestedFramesPage(BasePage):
     locators = NestedFramesLocators()
 
-    @allure.step("Check the 'Nested' frames")
+    @allure.step(
+        "Check the 'Nested' frames"
+    )
     def check_nested_frame(self):
         log = self.get_logger()
 

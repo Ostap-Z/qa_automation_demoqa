@@ -11,7 +11,9 @@ from locators.alerts_frame_windows_locators.alerts_locators import AlertsLocator
 class AlertsPage(BasePage):
     locators = AlertsLocators()
 
-    @allure.step("Check the 'Default Alert'")
+    @allure.step(
+        "Check the 'Default Alert'"
+    )
     def check_default_alert(self):
         log = self.get_logger()
 
@@ -34,7 +36,9 @@ class AlertsPage(BasePage):
         with allure.step("Get alert text result"):
             return alert.text
 
-    @allure.step("Check the 'Timer Alert'")
+    @allure.step(
+        "Check the 'Timer Alert'"
+    )
     def check_timer_alert(self):
         log = self.get_logger()
 
@@ -61,7 +65,9 @@ class AlertsPage(BasePage):
         with allure.step("Get alert text result"):
             return alert.text
 
-    @allure.step("Check the 'Confirm Alert'")
+    @allure.step(
+        "Check the 'Confirm Alert'"
+    )
     def check_confirm_alert(self):
         log = self.get_logger()
 
@@ -86,7 +92,9 @@ class AlertsPage(BasePage):
                  f"'{confirm_result_text.split(' ')[-1].lower()}'")
         return confirm_result_text.split(" ")[-1].lower()
 
-    @allure.step("Check the 'Prompt Alert'")
+    @allure.step(
+        "Check the 'Prompt Alert'"
+    )
     def check_prompt_alert(self):
         log = self.get_logger()
 

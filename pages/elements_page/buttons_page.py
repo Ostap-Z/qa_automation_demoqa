@@ -7,7 +7,9 @@ from locators.elements_locators.buttons_locators import ButtonsPageLocators
 class ButtonsPage(BasePage):
     locators = ButtonsPageLocators()
 
-    @allure.step("Click on different buttons")
+    @allure.step(
+        "Click on different buttons"
+    )
     def click_on_the_different_button(self, type_click):
         log = self.get_logger()
 
@@ -38,7 +40,9 @@ class ButtonsPage(BasePage):
                 return self.check_clicked_button(
                     self.locators.SUCCESS_LEFT_CLICK)
 
-    @allure.step("Check clicked button")
+    @allure.step(
+        "Check clicked button"
+    )
     def check_clicked_button(self, element):
         log = self.get_logger()
         result = self.element_is_present(element).text

@@ -10,7 +10,9 @@ from generator.generator import generated_file
 class UploadPage(BasePage):
     locators = UploadLocators()
 
-    @allure.step("Upload a file")
+    @allure.step(
+        "Upload a file"
+    )
     def upload_file(self):
         log = self.get_logger()
         file_name, path = generated_file()
@@ -25,7 +27,9 @@ class UploadPage(BasePage):
         log.info(f"Removed a file {file_name} from project directory")
         return file_name.split("\\")[-1]
 
-    @allure.step("Get uploaded result presented as file name in the paragraph")
+    @allure.step(
+        "Get uploaded result presented as file name in the paragraph"
+    )
     def get_uploaded_result(self):
         log = self.get_logger()
         result = self.element_is_present(
@@ -34,6 +38,8 @@ class UploadPage(BasePage):
         return result
 
     @staticmethod
-    @allure.step("Remove a file: {0}")
+    @allure.step(
+        "Remove a file: {0}"
+    )
     def remove_file(file):
         os.remove(file)

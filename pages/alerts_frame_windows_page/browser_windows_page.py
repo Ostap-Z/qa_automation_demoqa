@@ -7,7 +7,9 @@ from locators.alerts_frame_windows_locators.browser_windows_locators import Brow
 class BrowserWindowsPage(BasePage):
     locators = BrowserWindowsLocators()
 
-    @allure.step("Check the 'Opened New Tab'")
+    @allure.step(
+        "Check the 'Opened New Tab'"
+    )
     def check_opened_new_tab(self):
         log = self.get_logger()
 
@@ -26,7 +28,9 @@ class BrowserWindowsPage(BasePage):
         log.info(f"Text presented in the new tab: {text_title}")
         return text_title
 
-    @allure.step("Check the 'Opened New Window'")
+    @allure.step(
+        "Check the 'Opened New Window'"
+    )
     def check_opened_new_window(self):
         log = self.get_logger()
 

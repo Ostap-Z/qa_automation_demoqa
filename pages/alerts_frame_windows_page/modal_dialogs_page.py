@@ -7,7 +7,9 @@ from locators.alerts_frame_windows_locators.modal_dialogs_locators import ModalD
 class ModalDialogsPage(BasePage):
     locators = ModalDialogsLocators()
 
-    @allure.step("Check the 'Small' modal dialog")
+    @allure.step(
+        "Check the 'Small' modal dialog"
+    )
     def check_small_modal_dialog(self):
         log = self.get_logger()
 
@@ -35,7 +37,9 @@ class ModalDialogsPage(BasePage):
                  f"['{small_modal_title}', {len(small_modal_text)}]")
         return [small_modal_title, len(small_modal_text)]
 
-    @allure.step("Check the 'Large' modal dialog")
+    @allure.step(
+        "Check the 'Large' modal dialog"
+    )
     def check_large_modal_dialog(self):
         log = self.get_logger()
 

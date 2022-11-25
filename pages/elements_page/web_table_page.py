@@ -9,7 +9,9 @@ from generator.generator import generated_person
 class WebTablePage(BasePage):
     locators = WebTablePageLocators()
 
-    @allure.step("Add a new person")
+    @allure.step(
+        "Add a new person"
+    )
     def add_new_person(self):
         log = self.get_logger()
         count = 1
@@ -63,7 +65,9 @@ class WebTablePage(BasePage):
                     str(age), email,
                     str(salary), department]
 
-    @allure.step("Check new added person in the table")
+    @allure.step(
+        "Check new added person in the table"
+    )
     def check_new_added_person(self):
         log = self.get_logger()
         full_person_list = \
@@ -72,7 +76,9 @@ class WebTablePage(BasePage):
         log.info(f"Found items in the table: {data}")
         return data
 
-    @allure.step("Search a person in the table by key word")
+    @allure.step(
+        "Search a person in the table by key word"
+    )
     def search_person(self, key_word):
         log = self.get_logger()
 
@@ -81,7 +87,9 @@ class WebTablePage(BasePage):
                 self.locators.SEARCH_INPUT).send_keys(key_word)
         log.info(f"Searching person in the table")
 
-    @allure.step("Validate a search result")
+    @allure.step(
+        "Validate a search result"
+    )
     def check_search_person(self):
         log = self.get_logger()
         delete_button = \
@@ -91,7 +99,9 @@ class WebTablePage(BasePage):
         log.info(f"Found items in the table: {result}")
         return result
 
-    @allure.step("Update a person info")
+    @allure.step(
+        "Update a person info"
+    )
     def update_person_info(self):
         log = self.get_logger()
         person_info = next(generated_person())
@@ -118,12 +128,16 @@ class WebTablePage(BasePage):
         log.info("Person form is updated")
         return str(age)
 
-    @allure.step("Delete a person from the table by 'Delete' button")
+    @allure.step(
+        "Delete a person from the table by 'Delete' button"
+    )
     def delete_person(self):
         self.element_is_visible(
             self.locators.DELETE_BUTTON).click()
 
-    @allure.step("Check the person was deleted")
+    @allure.step(
+        "Check the person was deleted"
+    )
     def check_deleted_person(self):
         log = self.get_logger()
         result = self.element_is_present(
@@ -131,7 +145,9 @@ class WebTablePage(BasePage):
         log.info("Person was deleted from the table")
         return result
 
-    @allure.step("Select different amount of table rows")
+    @allure.step(
+        "Select different amount of table rows"
+    )
     def select_up_to_rows(self):
         log = self.get_logger()
         count = [5, 10, 20, 25, 50, 100]
@@ -151,7 +167,9 @@ class WebTablePage(BasePage):
             data.append(self.check_count_rows())
         return data
 
-    @allure.step("Check amount of opened table rows")
+    @allure.step(
+        "Check amount of opened table rows"
+    )
     def check_count_rows(self):
         list_rows = self.elements_are_present(
             self.locators.FULL_PERSON_LIST)

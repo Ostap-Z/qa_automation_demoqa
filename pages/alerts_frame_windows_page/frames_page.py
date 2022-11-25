@@ -7,7 +7,9 @@ from locators.alerts_frame_windows_locators.frames_locators import FramesLocator
 class FramesPage(BasePage):
     locators = FramesLocators()
 
-    @allure.step("Check frames")
+    @allure.step(
+        "Check frames"
+    )
     def check_frame(self, frame_num):
         log = self.get_logger()
 

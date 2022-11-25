@@ -9,14 +9,18 @@ from locators.elements_locators.check_box_locators import CheckBoxPageLocators
 class CheckBoxPage(BasePage):
     locators = CheckBoxPageLocators()
 
-    @allure.step("Open a full list of checkboxes")
+    @allure.step(
+        "Open a full list of checkboxes"
+    )
     def open_full_list(self):
         log = self.get_logger()
         self.element_is_visible(
             self.locators.EXPAND_ALL_BUTTON).click()
         log.info("Opened full list of checkboxes")
 
-    @allure.step("Click on the random check boxes")
+    @allure.step(
+        "Click on the random check boxes"
+    )
     def click_random_check_box(self):
         log = self.get_logger()
         item_list = self.elements_are_visible(
@@ -35,7 +39,9 @@ class CheckBoxPage(BasePage):
                 else:
                     break
 
-    @allure.step("Get a list of checked check boxes")
+    @allure.step(
+        "Get a list of checked check boxes"
+    )
     def get_checked_checkboxes(self):
         log = self.get_logger()
         checked_list = self.elements_are_present(
@@ -47,7 +53,9 @@ class CheckBoxPage(BasePage):
         log.info(f"List of checked checkboxes: {data}")
         return str(data).replace(' ', '').replace('.doc', '').lower()
 
-    @allure.step("Get an output results")
+    @allure.step(
+        "Get an output results"
+    )
     def get_output_result(self):
         log = self.get_logger()
         result_list = self.elements_are_present(

@@ -11,7 +11,9 @@ from locators.elements_locators.download_locators import DownloadLocators
 class DownloadPage(BasePage):
     locators = DownloadLocators()
 
-    @allure.step("Download a file")
+    @allure.step(
+        "Download a file"
+    )
     def download_file(self):
         log = self.get_logger()
         link = self.element_is_present(
@@ -31,6 +33,8 @@ class DownloadPage(BasePage):
         return check_file
 
     @staticmethod
-    @allure.step("Delete a file: {0}")
+    @allure.step(
+        "Delete a file: {0}"
+    )
     def remove_file(file):
         os.remove(file)

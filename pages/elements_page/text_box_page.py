@@ -8,7 +8,9 @@ from generator.generator import generated_person
 class TextBoxPage(BasePage):
     locators = TextBoxPageLocators()
 
-    @allure.step("Fill in form fields")
+    @allure.step(
+        "Fill in form fields"
+    )
     def fill_in_form_fields(self):
         log = self.get_logger()
         person_info = next(generated_person())
@@ -43,7 +45,9 @@ class TextBoxPage(BasePage):
         log.info("Submitted a form")
         return full_name, email, current_address, permanent_address
 
-    @allure.step("Validate the filled form")
+    @allure.step(
+        "Validate the filled form"
+    )
     def validate_filled_form(self):
         log = self.get_logger()
 

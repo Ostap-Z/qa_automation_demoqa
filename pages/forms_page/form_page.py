@@ -11,7 +11,9 @@ from generator.generator import generated_person, generated_file
 class FormPage(BasePage):
     locators = FormLocators()
 
-    @allure.step("Fills in a registration form")
+    @allure.step(
+        "Fills in a registration form"
+    )
     def fill_form_fields(self):
         log = self.get_logger()
 
@@ -81,7 +83,9 @@ class FormPage(BasePage):
         log.info(f"Filled in form with data: {person}")
         return person
 
-    @allure.step("Get form result")
+    @allure.step(
+        "Get form result"
+    )
     def get_form_result(self):
         log = self.get_logger()
 
@@ -97,6 +101,8 @@ class FormPage(BasePage):
         return data
 
     @staticmethod
-    @allure.step("Remove a file: {0}")
+    @allure.step(
+        "Remove a file: {0}"
+    )
     def remove_file(file):
         os.remove(file)

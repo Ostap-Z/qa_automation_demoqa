@@ -8,7 +8,9 @@ from locators.elements_locators.links_locators import LinksPageLocators
 class LinksPage(BasePage):
     locators = LinksPageLocators()
 
-    @allure.step("Check a simple new tab")
+    @allure.step(
+        "Check a simple new tab"
+    )
     def check_new_tab_simple_link(self):
         log = self.get_logger()
         simple_link = \
@@ -43,7 +45,9 @@ class LinksPage(BasePage):
                 log.info(f"Status code: {request.status_code}")
                 return link_href, request.status_code
 
-    @allure.step("Check broken link")
+    @allure.step(
+        "Check broken link"
+    )
     def check_broken_link(self, url):
         log = self.get_logger()
 
