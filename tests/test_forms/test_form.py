@@ -1,8 +1,16 @@
+import allure
+
 from pages.forms_page.form_page import FormPage
 
 
+@allure.suite("Form suite")
+@allure.feature("Form page")
 class TestForm:
 
+    @allure.title(
+        "Verify that the user has an opportunity to do a registration "
+        "and registration data is presented in the table"
+    )
     def test_form(self, driver):
         form_page = FormPage(
             driver,
