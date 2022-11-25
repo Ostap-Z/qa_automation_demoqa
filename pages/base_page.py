@@ -17,7 +17,8 @@ class BasePage:
 
     @allure.step("Open a browser")
     def open(self):
-        self.driver.get(self.url)
+        with allure.step(f"Open a url: {self.url}"):
+            self.driver.get(self.url)
 
     @allure.step("Find a visible element")
     def element_is_visible(self, locator, timeout=5):
