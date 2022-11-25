@@ -1,4 +1,3 @@
-import logging
 from random import randint
 
 from pages.base_page import BasePage

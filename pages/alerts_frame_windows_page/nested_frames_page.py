@@ -1,5 +1,3 @@
-import logging
-
 from pages.base_page import BasePage
 from locators.alerts_frame_windows_locators.nested_frames_locators import NestedFramesLocators
 

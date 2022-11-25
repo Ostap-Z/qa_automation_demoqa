@@ -1,5 +1,3 @@
-import time
-
 from pages.forms_page.form_page import FormPage
 
 
