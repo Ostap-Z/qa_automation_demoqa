@@ -1,5 +1,7 @@
 from random import sample
 
+import allure
+
 from pages.base_page import BasePage
 from locators.interactions_locators.sortable_locators import SortableLocators
 
@@ -7,10 +9,16 @@ from locators.interactions_locators.sortable_locators import SortableLocators
 class SortablePage(BasePage):
     locators = SortableLocators()
 
+    @allure.step(
+        "Get an order of the 'Sortable' items"
+    )
     def get_sortable_items(self, elements):
         item_list = self.elements_are_visible(elements)
         return [item.text for item in item_list]
 
+    @allure.step(
+        "Check change an order of the 'Sortable' items"
+    )
     def change_item_order(self, item_type):
         log = self.get_logger()
         item = {
@@ -23,8 +31,12 @@ class SortablePage(BasePage):
                 'items': self.locators.GRID_ITEMS
             }
         }
-        tab = self.element_is_visible(item[item_type]['tab'])
-        tab.click()
+
+        with allure.step(f"Open the "
+                         f"'{item[item_type]['tab'].text}' tab"):
+            tab = self.element_is_visible(item[item_type]['tab'])
+            tab.click()
+
         log.info(f"Opened tab: {tab.text}")
         order_before = self.get_sortable_items(
             item[item_type]['items']
@@ -34,10 +46,15 @@ class SortablePage(BasePage):
         )
         chosen_draggable_item = item_list[0]
         drag_to_position = item_list[1]
-        self.action_drag_and_drop_to_element(
-            chosen_draggable_item,
-            drag_to_position
-        )
+
+        with allure.step(f"Change an order of items "
+                         f"{chosen_draggable_item} "
+                         f"and {drag_to_position}"):
+            self.action_drag_and_drop_to_element(
+                chosen_draggable_item,
+                drag_to_position
+            )
+
         log.info(f"{chosen_draggable_item.text} changed position"
                  f" with {drag_to_position.text}")
         order_after = self.get_sortable_items(

@@ -1,8 +1,17 @@
+import allure
+
 from pages.interactions_page.resizable_page import ResizablePage
 
 
+@allure.suite("Interactions suite")
+@allure.feature("Resizable page")
 class TestResizable:
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to resize 'Resizable' elements "
+        "and their max, min size equals to the expected"
+    )
     def test_resizable(self, driver):
         resizable_page = ResizablePage(
             driver,

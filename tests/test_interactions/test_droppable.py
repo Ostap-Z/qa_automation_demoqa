@@ -1,8 +1,16 @@
+import allure
+
 from pages.interactions_page.droppable_page import DroppablePage
 
 
+@allure.suite("Interactions suite")
+@allure.feature("Droppable page")
 class TestDroppable:
 
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "drag and drop the 'Simple' droppable item"
+    )
     def test_simple_droppable(self, driver):
         droppable_page = DroppablePage(
             driver,
@@ -18,6 +26,11 @@ class TestDroppable:
             f"\n\tActual drop text should be 'Dropped!'. " \
             f"So, the item was successfully dropped."
 
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "drag and drop the 'Acceptable' "
+        "and 'Not Acceptable' droppable items"
+    )
     def test_accept_droppable(self, driver):
         droppable_page = DroppablePage(
             driver,
@@ -41,6 +54,11 @@ class TestDroppable:
             f"\nExpected result:\n\t" \
             f"Expected acceptable text result should be: Dropped!"
 
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "drag and drop the 'Greedy' "
+        "and 'Not Greedy' droppable items"
+    )
     def test_prevent_propogation_droppable(self, driver):
         droppable_page = DroppablePage(
             driver,
@@ -82,6 +100,11 @@ class TestDroppable:
             f"\n\tA text should be changed." \
             f"\n\tExpected text: Outer droppable"
 
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "drag and drop the 'Revert' "
+        "and 'Not Revert' droppable items"
+    )
     def test_revert_draggable_droppable(self, driver):
         droppable_page = DroppablePage(
             driver,

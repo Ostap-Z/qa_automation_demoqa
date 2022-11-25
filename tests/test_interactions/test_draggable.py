@@ -1,8 +1,16 @@
+import allure
+
 from pages.interactions_page.draggable_page import DraggablePage
 
 
+@allure.suite("Interactions suite")
+@allure.feature("Draggable page")
 class TestDraggable:
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to move draggable elements"
+    )
     def test_simple_draggable(self, driver):
         draggable_page = DraggablePage(
             driver,

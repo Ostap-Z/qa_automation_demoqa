@@ -1,8 +1,16 @@
+import allure
+
 from pages.interactions_page.selectable_page import SelectablePage
 
 
+@allure.suite("Interactions suite")
+@allure.feature("Selectable page")
 class TestSelectable:
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to chose 'Selectable' elements"
+    )
     def test_selectable(self, driver):
         selectable_page = SelectablePage(
             driver,

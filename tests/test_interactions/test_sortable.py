@@ -1,8 +1,16 @@
+import allure
+
 from pages.interactions_page.sortable_page import SortablePage
 
 
+@allure.suite("Interactions suite")
+@allure.feature("Sortable page")
 class TestSortable:
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to change an order of the 'Sortable' elements"
+    )
     def test_sortable(self, driver):
         sortable_page = SortablePage(
             driver,
