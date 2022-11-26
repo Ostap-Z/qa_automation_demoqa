@@ -1,8 +1,16 @@
+import allure
+
 from pages.widgets_page.accordian_page import AccordianPage
 
 
+@allure.suite("Widgets suite")
+@allure.feature("Accordian page")
 class TestAccordian:
 
+    @allure.title(
+        "Verify that accordian title is equal to the expected "
+        "and accordian content length is more than 0"
+    )
     def test_accordian(self, driver):
         accordian_page = AccordianPage(
             driver,

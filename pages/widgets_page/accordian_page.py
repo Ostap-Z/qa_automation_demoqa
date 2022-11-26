@@ -1,3 +1,4 @@
+import allure
 from selenium.common import TimeoutException, ElementClickInterceptedException
 
 from pages.base_page import BasePage
@@ -7,6 +8,9 @@ from locators.widgets_locators.accordian_locators import AccordianLocators
 class AccordianPage(BasePage):
     locators = AccordianLocators()
 
+    @allure.step(
+        "Check the 'Accordian'"
+    )
     def check_accordian(self, accordian_num):
         log = self.get_logger()
         accordian = {
@@ -23,15 +27,20 @@ class AccordianPage(BasePage):
                 'content': self.locators.THIRD_CONTENT
             }
         }
-        self.hide_ads()
-        accordian_title = self.element_is_visible(
-            accordian[accordian_num]['title'])
-        log.info("Accordian title is visible on the page")
-        accordian_title.click()
+        with allure.step("Remove ads"):
+            self.hide_ads()
+
+        with allure.step(f"Open the tab"):
+            accordian_title = self.element_is_visible(
+                accordian[accordian_num]['title'])
+            accordian_title.click()
+
         log.info("Opened accordian title section")
         try:
-            accordian_content = self.element_is_visible(
-                accordian[accordian_num]['content']).text
+            with allure.step("Get the 'Accordian' content"):
+                accordian_content = self.element_is_visible(
+                    accordian[accordian_num]['content']).text
+
             log.info(f"Get accordian content: {accordian_content}")
         except TimeoutException:
             accordian_title.click()
@@ -42,8 +51,10 @@ class AccordianPage(BasePage):
             accordian_title.click()
             log.info("Closed accordian title section")
         except ElementClickInterceptedException:
-            self.hide_ads()
-            self.hide_image_ads()
+            with allure.step("Remove ads"):
+                self.hide_ads()
+                self.hide_image_ads()
+
             self.element_is_visible(accordian_title)
             log.info("Accordian title is visible on the page")
             accordian_title.click()
@@ -55,4 +66,9 @@ class AccordianPage(BasePage):
             log.info("Closed accordian title section")
         log.info(f"Returned title, content: {accordian_title.text}"
                  f"\n{accordian_content}")
-        return [accordian_title.text, accordian_content]
+
+        with allure.step("Return accordian title, accordian content: "
+                         f"{accordian_title.text}, "
+                         f"{accordian_content}"):
+
+            return [accordian_title.text, accordian_content]

@@ -1,8 +1,16 @@
+import allure
+
 from pages.widgets_page.menu_page import MenuPage
 
 
+@allure.suite("Widgets suite")
+@allure.feature("Menu page")
 class TestMenu:
 
+    @allure.title(
+        "Verify that all required menu items are visible "
+        "on the 'Menu' page"
+    )
     def test_menu(self, driver):
         menu_page = MenuPage(
             driver,

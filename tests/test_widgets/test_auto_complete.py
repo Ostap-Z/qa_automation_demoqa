@@ -1,8 +1,16 @@
+import allure
+
 from pages.widgets_page.auto_complete_page import AutoCompletePage
 
 
+@allure.suite("Widgets suite")
+@allure.feature("Auto Complete page")
 class TestAutoComplete:
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to fill in a field with multiple values"
+    )
     def test_multiple_auto_complete(self, driver):
         auto_complete_page = AutoCompletePage(
             driver,
@@ -20,6 +28,10 @@ class TestAutoComplete:
             f"\nExpected result:" \
             f"\n\tInput and output colors should be the same"
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to remove multiple values"
+    )
     def test_remove_multiple_value(self, driver):
         auto_complete_page = AutoCompletePage(
             driver,
@@ -38,6 +50,10 @@ class TestAutoComplete:
             "\n\tOutput colors should be less than input colors. " \
             "So, some colors were removed."
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to fill in a field with the single value"
+    )
     def test_single_auto_complete(self, driver):
         auto_complete_page = AutoCompletePage(
             driver,

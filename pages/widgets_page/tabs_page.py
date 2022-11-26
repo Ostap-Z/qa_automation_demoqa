@@ -1,3 +1,5 @@
+import allure
+
 from pages.base_page import BasePage
 from locators.widgets_locators.tabs_locators import TabsLocators
 
@@ -5,6 +7,9 @@ from locators.widgets_locators.tabs_locators import TabsLocators
 class TabsPage(BasePage):
     locators = TabsLocators()
 
+    @allure.step(
+        "Check different tabs"
+    )
     def check_tabs(self, tab_name):
         log = self.get_logger()
         tab = {
@@ -25,12 +30,17 @@ class TabsPage(BasePage):
                 "content": self.locators.MORE_CONTENT
             }
         }
-        tab_button = self.element_is_visible(
-            tab[tab_name]["button"])
-        tab_button.click()
+        with allure.step(f"Open the tab"):
+            tab_button = self.element_is_visible(
+                tab[tab_name]["button"])
+            tab_button.click()
+
         log.info(f"Opened {tab_button.text} tab")
-        tab_content = self.element_is_visible(
-            tab[tab_name]["content"]).text
+
+        with allure.step("Get the tab content"):
+            tab_content = self.element_is_visible(
+                tab[tab_name]["content"]).text
+
         log.info(f"Got {tab_button.text} content data: {tab_content}")
         log.info(f"Returned data: {tab_button.text}, "
                  f"{len(tab_content)}")

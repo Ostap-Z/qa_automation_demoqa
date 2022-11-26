@@ -1,8 +1,15 @@
+import allure
+
 from pages.widgets_page.progress_bar_page import ProgressBarPage
 
 
+@allure.suite("Widgets suite")
+@allure.feature("Progress Bar page")
 class TestProgressBar:
 
+    @allure.title(
+        "Verify that the 'Progress Bar' changes a value"
+    )
     def test_progress_bar(self, driver):
         progress_bar_page = ProgressBarPage(
             driver,

@@ -1,8 +1,16 @@
+import allure
+
 from pages.widgets_page.tool_tips_page import ToolTipsPage
 
 
+@allure.suite("Widgets suite")
+@allure.feature("Tool Tips page")
 class TestToolTips:
 
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "hover over the element and get a correct tool tip text"
+    )
     def test_tool_tips(self, driver):
         tool_tips_page = ToolTipsPage(
             driver,

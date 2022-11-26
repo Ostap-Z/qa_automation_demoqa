@@ -1,8 +1,16 @@
+import allure
+
 from pages.widgets_page.date_picker_page import DatePickerPage
 
 
+@allure.suite("Widgets suite")
+@allure.feature("Date Picker page")
 class TestDatePicker:
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to change a date"
+    )
     def test_change_date(self, driver):
         date_picker_page = DatePickerPage(
             driver,
@@ -20,6 +28,10 @@ class TestDatePicker:
             f"\n\tDate input and output should be different. " \
             f"So, the user changed a date."
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to change the date and time"
+    )
     def test_change_date_and_time(self, driver):
         date_picker_page = DatePickerPage(
             driver,

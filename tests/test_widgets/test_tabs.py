@@ -1,10 +1,18 @@
+import allure
 import pytest
 
 from pages.widgets_page.tabs_page import TabsPage
 
 
+@allure.suite("Widgets suite")
+@allure.feature("Tabs page")
 class TestTabs:
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to open different tabs and get "
+        "their content: [what_tab, use_tab, origin_tab, more_tab]"
+    )
     @pytest.mark.xfail(
         reason="There's a known bug - "
                "The 'More' button tab is not clickable. "

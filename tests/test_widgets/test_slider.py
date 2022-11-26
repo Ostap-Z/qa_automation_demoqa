@@ -1,8 +1,16 @@
+import allure
+
 from pages.widgets_page.slider_page import SliderPage
 
 
+@allure.suite("Widgets suite")
+@allure.feature("Slider pag")
 class TestSlider:
 
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to drag the 'Slider' element"
+    )
     def test_slider(self, driver):
         slider_page = SliderPage(
             driver,
