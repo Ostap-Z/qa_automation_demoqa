@@ -16,7 +16,7 @@ class DraggablePage(BasePage):
     def get_before_after_positions(self, drag_element):
         log = self.get_logger()
 
-        with allure.suite("Drag and drop element by offset"):
+        with allure.step("Drag and drop element by offset"):
             self.action_drag_and_drop_by_offset(
                 drag_element,
                 randint(0, 50),
@@ -27,7 +27,7 @@ class DraggablePage(BasePage):
             before_position = drag_element.get_attribute("style")
         log.info(f"Dragged item to the position: {before_position}")
 
-        with allure.suite("Drag and drop element by offset"):
+        with allure.step("Drag and drop element by offset"):
             self.action_drag_and_drop_by_offset(
                 drag_element,
                 randint(0, 50),

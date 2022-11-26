@@ -32,8 +32,7 @@ class SortablePage(BasePage):
             }
         }
 
-        with allure.step(f"Open the "
-                         f"'{item[item_type]['tab'].text}' tab"):
+        with allure.step(f"Open the tab"):
             tab = self.element_is_visible(item[item_type]['tab'])
             tab.click()
 
@@ -48,8 +47,8 @@ class SortablePage(BasePage):
         drag_to_position = item_list[1]
 
         with allure.step(f"Change an order of items "
-                         f"{chosen_draggable_item} "
-                         f"and {drag_to_position}"):
+                         f"{chosen_draggable_item.text} "
+                         f"and {drag_to_position.text}"):
             self.action_drag_and_drop_to_element(
                 chosen_draggable_item,
                 drag_to_position
