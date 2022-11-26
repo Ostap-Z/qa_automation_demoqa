@@ -4,7 +4,7 @@ from pages.widgets_page.slider_page import SliderPage
 
 
 @allure.suite("Widgets suite")
-@allure.feature("Slider pag")
+@allure.feature("Slider page")
 class TestSlider:
 
     @allure.title(
