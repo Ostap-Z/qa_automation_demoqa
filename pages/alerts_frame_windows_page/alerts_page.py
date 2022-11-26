@@ -55,12 +55,10 @@ class AlertsPage(BasePage):
                 alert = self.go_to_alert()
                 log.info("Went to the alert")
                 log.info(f"Alert text is '{alert.text}'")
-                # return alert.text
             except UnexpectedAlertPresentException:
                 alert = self.go_to_alert()
                 log.info("Went to the alert")
                 log.info(f"Alert text is '{alert.text}'")
-                # return alert.text
         with allure.step("Get alert text result"):
             return alert.text
 
