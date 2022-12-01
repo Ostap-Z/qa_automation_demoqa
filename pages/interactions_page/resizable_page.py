@@ -33,7 +33,7 @@ class ResizablePage(BasePage):
         with allure.step("Drag the 'Large Resizable' handle "
                          "to the max size"):
             self.action_drag_and_drop_by_offset(
-                self.element_is_visible(
+                self.element_is_present(
                     self.locators.RESIZABLE_LARGE_BOX_HANDLE),
                 300,
                 200
@@ -47,11 +47,13 @@ class ResizablePage(BasePage):
                 self.locators.RESIZABLE_LARGE_BOX))
 
         log.info(f"Got max size of large resizable box: {max_size}")
+        self.hide_ads()
+        self.hide_image_ads()
 
         with allure.step("Drag the 'Large Resizable' handle "
                          "to the min size"):
             self.action_drag_and_drop_by_offset(
-                self.element_is_visible(
+                self.element_is_present(
                     self.locators.RESIZABLE_LARGE_BOX_HANDLE),
                 -350,
                 -150
