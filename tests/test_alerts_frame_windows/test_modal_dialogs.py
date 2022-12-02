@@ -9,9 +9,9 @@ class TestModalDialogs:
 
     @allure.title(
         "Verify that the user has an opportunity to "
-        "open the 'Small' modal dialog and see a text there"
+        "get a correct title name of the 'Small' modal dialog"
     )
-    def test_small_modal_dialog(self, driver):
+    def test_title_small_modal_dialog(self, driver):
         modal_dialogs_page = ModalDialogsPage(
             driver,
             "https://demoqa.com/modal-dialogs"
@@ -19,36 +19,64 @@ class TestModalDialogs:
         modal_dialogs_page.open()
         small_modal = modal_dialogs_page.check_small_modal_dialog()
         assert small_modal[0] == "Small Modal", \
-            f"Actual result: " \
-            f"small modal title is '{small_modal[0]}'"\
-            "Expected result: " \
-            "small modal title should be 'Small Modal'"
-
-        assert small_modal[1] > 0, \
-            f"Actual result: small modal text length is " \
-            f"'{small_modal[1]}'"\
-            "Expected result: small modal text length should be > 0"
+            f"\nActual result:" \
+            f"\n\tThe 'Small' modal title is '{small_modal[0]}'"\
+            "\nExpected result:" \
+            "\n\tThe 'Small' modal title should be 'Small Modal'"
 
     @allure.title(
         "Verify that the user has an opportunity to "
-        "open the 'Large' modal dialog and see a text there"
+        "get a content of the 'Small' modal dialog"
     )
-    def test_large_modal_dialog(self, driver):
+    def test_content_small_modal_dialog(self, driver):
+        modal_dialogs_page = ModalDialogsPage(
+            driver,
+            "https://demoqa.com/modal-dialogs"
+        )
+        modal_dialogs_page.open()
+        small_modal = modal_dialogs_page.check_small_modal_dialog()
+        assert small_modal[1] > 0, \
+            f"\nActual result:" \
+            f"\n\tThe 'Small' modal dialog content length is " \
+            f"{small_modal[1]}'"\
+            "\nExpected result:" \
+            "\n\tThe 'Small' modal dialog content " \
+            "length should be > 0"
+
+
+
+
+
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "get a correct title name of the 'Large' modal dialog"
+    )
+    def test_title_large_modal_dialog(self, driver):
         modal_dialogs_page = ModalDialogsPage(
             driver,
             "https://demoqa.com/modal-dialogs"
         )
         modal_dialogs_page.open()
         large_modal = modal_dialogs_page.check_large_modal_dialog()
-
         assert large_modal[0] == "Large Modal", \
-            f"Actual result: " \
-            f"large modal title is '{large_modal[0]}'"\
-            "Expected result: " \
-            "large modal title should be 'Large Modal'"
+            f"\nActual result:" \
+            f"\n\tThe 'Large' modal title is '{large_modal[0]}'"\
+            "\nExpected result:" \
+            "\n\tThe 'Large' modal title should be 'Large Modal'"
 
+    @allure.title(
+        "Verify that the user has an opportunity to "
+        "get a content of the 'Large' modal dialog"
+    )
+    def test_content_large_modal_dialog(self, driver):
+        modal_dialogs_page = ModalDialogsPage(
+            driver,
+            "https://demoqa.com/modal-dialogs"
+        )
+        modal_dialogs_page.open()
+        large_modal = modal_dialogs_page.check_large_modal_dialog()
         assert large_modal[1] > 0, \
-            f"Actual result: " \
-            f"large modal text length is '{large_modal[1]}'"\
-            "Expected result: " \
-            "large modal text length should be > 0"
+            f"\nActual result:" \
+            f"\n\tThe 'Large' modal content length is '{large_modal[1]}'"\
+            "\nExpected result:" \
+            "\n\tThe 'Large' modal content length should be > 0"

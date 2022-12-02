@@ -21,13 +21,13 @@ class TestNestedFrames:
         parent_text, child_text = \
             nested_frames_page.check_nested_frame()
         assert parent_text == "Parent frame", \
-            f"Actual result: " \
-            f"parent frame text is '{parent_text}'"\
-            "Expected result: " \
-            "parent frame text should be 'Parent frame'"
+            f"Actual result:" \
+            f"\n\tThe 'Parent' frame text is '{parent_text}'"\
+            "\nExpected result: " \
+            "\n\tThe 'Parent' frame text should be 'Parent frame'"
 
         assert child_text == "Child Iframe", \
-            f"Actual result: " \
-            f"parent frame text is '{child_text}'"\
-            "Expected result: " \
-            "parent frame text should be 'Child Iframe'"
+            f"\nActual result:" \
+            f"\n\tThe 'Child' frame text is '{child_text}'"\
+            "\nExpected result: " \
+            "\n\tThe 'Child' frame text should be 'Child Iframe'"
