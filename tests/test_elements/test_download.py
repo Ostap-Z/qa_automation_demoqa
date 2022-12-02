@@ -19,4 +19,8 @@ class TestDownload:
         download_page.open()
         result = download_page.download_file()
         assert result is True, \
-            "The file has not been downloaded"
+            "\nActual result:" \
+            "\n\tThe file has not been downloaded" \
+            "\nExpected result:" \
+            "\n\tThe user should has an opportunity " \
+            "to download a file"

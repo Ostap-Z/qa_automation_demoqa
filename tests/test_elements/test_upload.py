@@ -19,5 +19,7 @@ class TestUpload:
         file_name = upload_page.upload_file()
         result = upload_page.get_uploaded_result()
         assert file_name == result, \
-            f"\nActual result: {result}" \
-            f"\nExpected result: {file_name}"
+            "\nActual result:" \
+            f"\n\t{result}" \
+            "\nExpected result:" \
+            f"\n\t{file_name}"

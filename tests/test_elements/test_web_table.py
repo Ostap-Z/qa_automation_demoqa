@@ -23,10 +23,10 @@ class TestWebTable:
         new_person = web_table_page.add_new_person()
         table_result = web_table_page.check_new_added_person()
         assert new_person in table_result, \
-            f"\nActual result: " \
-            f"{new_person} not in the {table_result}" \
-            f"\nExpected result: " \
-            f"{new_person} should be in the {table_result}"
+            "\nActual result:" \
+            f"\n\t{new_person} not in the {table_result}" \
+            "\nExpected result:" \
+            f"\n\t{new_person} should be in the {table_result}"
 
     @allure.title(
         "Verify that the user has an opportunity to "
@@ -42,10 +42,10 @@ class TestWebTable:
         web_table_page.search_person(key_word)
         table_result = web_table_page.check_search_person()
         assert key_word in table_result, \
-            f"\nActual result: " \
-            f"{key_word} not in the table {table_result}" \
-            f"\nExpected result: " \
-            f"{key_word} should be in the table {table_result}"
+            "\nActual result:" \
+            f"\n\t{key_word} not in the table {table_result}" \
+            "\nExpected result:" \
+            f"\n\t{key_word} should be in the table {table_result}"
 
     @allure.title(
         "Verify that the user has an opportunity to "
@@ -62,8 +62,10 @@ class TestWebTable:
         age = web_table_page.update_person_info()
         row = web_table_page.check_search_person()
         assert age in row, \
-            f"Actual result: {age} is not present in the {row}" \
-            f"Expected result: {age} should be present in the {row}"
+            "\nActual result:" \
+            f"\n\t{age} is not present in the {row}" \
+            "\nExpected result:" \
+            f"\n\t{age} should be present in the {row}"
 
     @allure.title(
         "Verify that the user has an opportunity to "

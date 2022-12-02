@@ -19,8 +19,10 @@ class TestLinks:
         href_link, current_url = \
             links_page.check_new_tab_simple_link()
         assert href_link == current_url, \
-            f"\nActual result: {current_url}" \
-            f"\nExpected result: {href_link}"
+            "\nActual result:" \
+            f"\n\t{current_url}" \
+            "\nExpected result:" \
+            f"\n\t{href_link}"
 
     @allure.title(
         "Verify that a response code of the "
@@ -35,5 +37,7 @@ class TestLinks:
         response_code = links_page.check_broken_link(
             "https://demoqa.com/bad-request")
         assert response_code == 400, \
-            f"Actual result: {response_code}" \
-            f"Expected result: 400"
+            f"\nActual result:" \
+            f"\n\tStatus code is {response_code}" \
+            f"\nExpected result:" \
+            f"\n\tStatus code should be 400"

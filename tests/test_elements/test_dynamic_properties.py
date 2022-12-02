@@ -19,10 +19,11 @@ class TestDynamicProperties:
         dynamic_properties.open()
         enable_button = dynamic_properties.check_enable_button()
         assert enable_button is True, \
-            f"\nActual result: appear_button is clickable: " \
-            f"{enable_button}" \
-            f"\nExpected result: " \
-            f"appear_button should be clickable(True) after 5 seconds"
+            f"\nActual result:" \
+            f"\n\tAppear_button is clickable: {enable_button}" \
+            f"\nExpected result:" \
+            f"\n\tAppear_button should be clickable(True) " \
+            f"after 5 seconds"
 
     @allure.title(
         "Verify that the 'Change Color' button text "
@@ -37,9 +38,12 @@ class TestDynamicProperties:
         color_before, color_after = \
             dynamic_properties.check_changed_color()
         assert color_before != color_after, \
-            f"\nColors should be different" \
-            f"\nActual coloc before: {color_before}" \
-            f"\nActual color after: {color_after}"
+            "\nActual result:" \
+            "\n\tColors equal to each other" \
+            f"\n\tActual coloc before: {color_before}" \
+            f"\n\tActual color after: {color_after}" \
+            "\nExpected result:" \
+            "\n\tColors should be different"
 
     @allure.title(
         "Verify that the 'Visible After' button "
@@ -53,7 +57,7 @@ class TestDynamicProperties:
         dynamic_properties.open()
         appear_button = dynamic_properties.check_appear_button()
         assert appear_button is True, \
-            f"\nActual result: " \
-            f"appear_button is visible: {appear_button}" \
-            f"\nExpected result: " \
-            f"appear_button should be visible (True)"
+            f"\nActual result:" \
+            f"\n\tAppear_button is visible: {appear_button}" \
+            f"\nExpected result:" \
+            f"\n\tAppear_button should be visible (True)"
