@@ -88,10 +88,10 @@ class ResizablePage(BasePage):
 
         with allure.step("Get the max size "
                          "of the 'Small Resizable' box"):
-            max_size = self.get_width_height(self.get_max_min_size(
+            stretched_size = self.get_width_height(self.get_max_min_size(
                 self.locators.RESIZABLE_SMALL_BOX))
 
-        log.info(f"Got max size of small resizable box: {max_size}")
+        log.info(f"Got max size of small resizable box: {stretched_size}")
 
         with allure.step("Drag the 'Small Resizable' handle "
                          "to the min size"):
@@ -106,8 +106,8 @@ class ResizablePage(BasePage):
 
         with allure.step("Get the min size "
                          "of the 'Small Resizable' box"):
-            min_size = self.get_width_height(self.get_max_min_size(
+            pulled_size = self.get_width_height(self.get_max_min_size(
                 self.locators.RESIZABLE_SMALL_BOX))
 
-        log.info(f"Got min size of small resizable box: {min_size}")
-        return max_size, min_size
+        log.info(f"Got min size of small resizable box: {pulled_size}")
+        return stretched_size, pulled_size

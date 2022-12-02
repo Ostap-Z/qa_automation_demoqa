@@ -46,7 +46,7 @@ class DroppablePage(BasePage):
     @allure.step(
         "Check the 'Accept' drop"
     )
-    def drop_accept(self):
+    def drop_accept(self, draggable_type):
         log = self.get_logger()
 
         with allure.step("Open the 'Accept' tab"):
@@ -55,51 +55,75 @@ class DroppablePage(BasePage):
 
         acceptable_div = self.element_is_visible(
             self.locators.ACCEPT_ACCEPTABLE)
+
         not_acceptable_div = self.element_is_visible(
             self.locators.ACCEPT_NOT_ACCEPTABLE)
+
         drop_div = self.element_is_visible(
             self.locators.ACCEPT_DROP_HERE)
 
-        with allure.step(f"Drag {not_acceptable_div.text} "
-                         f"and drop to {drop_div.text} element"):
-            self.action_drag_and_drop_to_element(
-                not_acceptable_div,
-                drop_div
-            )
+        with allure.step("Work with the 'Not Acceptable' draggable item"):
+            if draggable_type == "not acceptable":
+                with allure.step(f"Drag {not_acceptable_div.text} "
+                                 f"and drop to {drop_div.text} element"):
+                    self.action_drag_and_drop_to_element(
+                        not_acceptable_div,
+                        drop_div
+                    )
 
-        log.info(f"Droppable not acceptable info: "
-                 f"source = {not_acceptable_div.text}, "
-                 f"target = {drop_div.text}")
-        log.info(f"Dragged and dropped {not_acceptable_div.text} "
-                 f"element to the target {drop_div.text}")
+                log.info(f"Droppable not acceptable info: "
+                         f"source = {not_acceptable_div.text}, "
+                         f"target = {drop_div.text}")
+                log.info(f"Dragged and dropped {not_acceptable_div.text} "
+                         f"element to the target {drop_div.text}")
 
-        with allure.step("Get the 'Not Acceptable' text"):
-            drop_text_not_acceptable = drop_div.text
+                with allure.step("Get the 'Not Acceptable' text"):
+                    drop_text_not_acceptable = drop_div.text
+                    log.info(
+                        f"Returns text results for not acceptable item: "
+                        f"{drop_text_not_acceptable}"
+                        )
+                    return drop_text_not_acceptable
 
-        with allure.step(f"Drag {acceptable_div.text} "
-                         f"and drop to {drop_div.text} element"):
-            self.action_drag_and_drop_to_element(
-                acceptable_div,
-                drop_div
-            )
+        with allure.step(
+                "Work with the 'Acceptable' draggable item"):
+            if draggable_type == "acceptable":
 
-        log.info(f"Droppable acceptable info: "
-                 f"source = {acceptable_div.text}, "
-                 f"target = {drop_div.text}")
-        log.info(f"Dragged and dropped {acceptable_div.text} "
-                 f"element to the target {drop_div.text}")
+                with allure.step(f"Drag {acceptable_div.text} "
+                                 f"and drop to {drop_div.text} element"):
+                    self.action_drag_and_drop_to_element(
+                        acceptable_div,
+                        drop_div
+                    )
 
-        with allure.step("Get the 'Acceptable' text"):
-            drop_text_acceptable = drop_div.text
+                log.info(f"Droppable acceptable info: "
+                         f"source = {acceptable_div.text}, "
+                         f"target = {drop_div.text}")
+                log.info(f"Dragged and dropped {acceptable_div.text} "
+                         f"element to the target {drop_div.text}")
 
-        log.info(f"Returned text results for not acceptable and acceptable: "
-                 f"{not_acceptable_div.text}, {acceptable_div.text}")
-        return drop_text_not_acceptable, drop_text_acceptable
+                with allure.step("Get the 'Acceptable' text"):
+                    drop_text_acceptable = drop_div.text
+                    log.info(
+                        f"Returns text results for acceptable item: "
+                        f"{drop_text_acceptable}"
+                        )
+                    return drop_text_acceptable
+
+
+
+
+
+
+
+
+
+
 
     @allure.step(
         "Check the 'Prevent Propogation' drop"
     )
-    def drop_prevent_propogation(self):
+    def drop_prevent_propogation(self, drag_type):
         log = self.get_logger()
 
         with allure.step("Open the 'Prevent Propogation' tab"):
@@ -109,60 +133,71 @@ class DroppablePage(BasePage):
 
         drag_div = self.element_is_visible(
             self.locators.PREVENT_DRAG_ME)
+
         not_greedy_inner_box = self.element_is_visible(
             self.locators.PREVENT_NOT_GREEDY_INNER_BOX)
+
         greedy_inner_box = self.element_is_visible(
             self.locators.PREVENT_GREEDY_INNER_BOX)
 
-        log.info(f"Droppable not greedy box info: "
-                 f"source = {drag_div.text}, "
-                 f"target = {not_greedy_inner_box.text}")
+        with allure.step("Work with the 'Not Greedy' item"):
+            if drag_type == "not greedy":
+                with allure.step(
+                        f"Drag {drag_div.text} and drop item "
+                        f"to {not_greedy_inner_box.text} element"):
+                    self.action_drag_and_drop_to_element(
+                        drag_div,
+                        not_greedy_inner_box
+                    )
+                log.info(f"Dragged and dropped {drag_div.text} element "
+                         f"to the target {not_greedy_inner_box.text}")
 
-        with allure.step(f"Drag {drag_div.text} "
-                         f"and drop to {not_greedy_inner_box.text} element"):
-            self.action_drag_and_drop_to_element(
-                drag_div,
-                not_greedy_inner_box
-            )
-        log.info(f"Dragged and dropped {drag_div.text} element"
-                 f" to the target {not_greedy_inner_box.text}")
+                with allure.step("Get the 'Not Greedy Box' text"):
+                    text_not_greedy_box = self.element_is_visible(
+                        self.locators.PREVENT_NOT_GREEDY_DROP_BOX_TEXT).text
 
-        with allure.step("Get the 'Not Greedy Box' text"):
-            text_not_greedy_box = self.element_is_visible(
-                self.locators.PREVENT_NOT_GREEDY_DROP_BOX_TEXT).text
+                with allure.step("Get the 'Not Greedy Inner Box' text"):
+                    text_not_greedy_inner_box = not_greedy_inner_box.text
 
-        with allure.step("Get the 'Not Greedy Inner Box' text"):
-            text_not_greedy_inner_box = not_greedy_inner_box.text
+                log.info(f"Returns not greedy text for box, inner box: "
+                         f"{text_not_greedy_box}, "
+                         f"{text_not_greedy_inner_box}")
+                return text_not_greedy_box, text_not_greedy_inner_box
 
-        log.info(f"Returned not greedy text for box, inner box:"
-                 f" {text_not_greedy_box}, "
-                 f"{text_not_greedy_inner_box}")
-        log.info(f"Droppable greedy box info: "
-                 f"source = {drag_div.text}, "
-                 f"target = {greedy_inner_box.text}")
+        with allure.step("Work with the 'Greedy' item"):
+            if drag_type == "greedy":
+                with allure.step(
+                        f"Drag {drag_div.text} and drop "
+                        f"to {greedy_inner_box.text} element"):
+                    self.action_drag_and_drop_to_element(
+                        drag_div,
+                        greedy_inner_box
+                    )
 
-        with allure.step(f"Drag {drag_div.text} "
-                         f"and drop to {greedy_inner_box.text} element"):
-            self.action_drag_and_drop_to_element(
-                drag_div,
-                greedy_inner_box
-            )
+                log.info(f"Dragged and dropped {drag_div.text} element "
+                         f"to the target {greedy_inner_box.text}")
 
-        log.info(f"Dragged and dropped {drag_div.text} element "
-                 f"to the target {greedy_inner_box.text}")
+                with allure.step("Get the 'Greedy Box' text"):
+                    text_greedy_box = self.element_is_visible(
+                        self.locators.PREVENT_GREEDY_DROP_BOX_TEXT).text
 
-        with allure.step("Get the 'Greedy Box' text"):
-            text_greedy_box = self.element_is_visible(
-                self.locators.PREVENT_GREEDY_DROP_BOX_TEXT).text
+                with allure.step("Get the 'Greedy Inner Box' text"):
+                    text_greedy_inner_box = greedy_inner_box.text
 
-        with allure.step("Get the 'Greedy Inner Box' text"):
-            text_greedy_inner_box = greedy_inner_box.text
+                log.info(f"Returns greedy text for box, inner box: "
+                         f"{text_greedy_box}, "
+                         f"{text_greedy_inner_box}")
+                return text_greedy_box, text_greedy_inner_box
 
-        log.info(f"Returned greedy text for box, inner box: "
-                 f"{text_greedy_box}, "
-                 f"{text_greedy_inner_box}")
-        return text_not_greedy_box, text_not_greedy_inner_box,\
-               text_greedy_box, text_greedy_inner_box
+
+
+
+
+
+
+
+
+
 
     @allure.step(
         "Check the 'Revert Draggable' drop"
