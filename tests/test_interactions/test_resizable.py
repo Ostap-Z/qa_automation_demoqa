@@ -36,12 +36,3 @@ class TestResizable:
             f"\n\tActual min size: {min_large_box}" \
             f"\nExpected result:" \
             f"\n\tMin large size should equals to: ('150px', '150px')"
-
-        assert max_resize != min_resize, \
-            f"\nActual result:" \
-            f"\n\tResize item has not been changed." \
-            f"\n\tMax size: {max_resize}" \
-            f"\n\tMin size: {min_resize}" \
-            f"\nExpected result:" \
-            f"\n\tResize min and max should be different. " \
-            f"So, the user has been changed a resizable item."
