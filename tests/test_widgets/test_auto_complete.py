@@ -47,8 +47,8 @@ class TestAutoComplete:
             f"\n\tInput amount of colors: {before}" \
             f"\n\tOutput amount of colors: {after}" \
             "\nExpected result:" \
-            "\n\tOutput colors should be less than input colors. " \
-            "So, some colors were removed."
+            "\n\tOutput colors should be less than input colors." \
+            "\n\tSo, some colors were removed."
 
     @allure.title(
         "Verify that the user has an opportunity "

@@ -27,6 +27,6 @@ class TestProgressBar:
                f"\n\tProgress bar after value: " \
                f"{progress_bar_value_after}"\
                f"\nExpected result:" \
-               f"\n\tThe progress bar should change a value. " \
-               f"So, progress bar after value " \
+               f"\n\tThe progress bar should change a value." \
+               f"\n\tSo, progress bar after value " \
                f"should be more than before."

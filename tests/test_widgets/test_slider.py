@@ -26,5 +26,5 @@ class TestSlider:
             f"\n\tBefore position: {slider_value_before}" \
             f"\n\tAfter position: {slider_value_after}"\
             "\nExpected result:" \
-            "\n\tThe slider should be dragged. " \
-            "So, after and before positions should not be the same"
+            "\n\tThe slider should be dragged." \
+            "\n\tSo, after and before positions should not be the same"

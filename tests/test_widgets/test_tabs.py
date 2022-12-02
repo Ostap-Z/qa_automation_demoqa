@@ -10,65 +10,131 @@ class TestTabs:
 
     @allure.title(
         "Verify that the user has an opportunity "
-        "to open different tabs and get "
-        "their content: [what_tab, use_tab, origin_tab, more_tab]"
+        "to open and get a correct 'What' tab title"
+    )
+    def test_what_title_tab(self, driver):
+        tabs_page = TabsPage(
+            driver,
+            "https://demoqa.com/tabs"
+        )
+        tabs_page.open()
+        what_tab_title = tabs_page.check_tabs("what")[0]
+        assert what_tab_title == "What", \
+            "\nActual result:" \
+            "\n\tThe 'What' tab title is not equal to the expected " \
+            f"\n\tActual 'What' tab title: {what_tab_title}" \
+            "\nExpected result:" \
+            "\n\tThe 'What' tab title should be 'What'"
+
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to get a 'What' tab content"
+    )
+    def test_what_content_tab(self, driver):
+        tabs_page = TabsPage(
+            driver,
+            "https://demoqa.com/tabs"
+        )
+        tabs_page.open()
+        what_tab_content = tabs_page.check_tabs("what")[1]
+        assert what_tab_content > 0, \
+            "\nActual result:" \
+            "\n\tThe 'What' tab content is empty on the page" \
+            f"\n\tActual 'What' tab content len: {what_tab_content}" \
+            "\nExpected result:" \
+            "\n\tThe 'What' tab content len should be > 0"
+
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to open and get a correct 'Origin' tab title"
+    )
+    def test_origin_title_tab(self, driver):
+        tabs_page = TabsPage(
+            driver,
+            "https://demoqa.com/tabs"
+        )
+        tabs_page.open()
+        origin_tab_title = tabs_page.check_tabs("origin")[0]
+        assert origin_tab_title == "Origin", \
+            "\nActual result:" \
+            "\n\tThe 'Origin' tab title is not equal to the expected " \
+            f"\n\tActual 'Origin' tab title: {origin_tab_title}" \
+            "\nExpected result:" \
+            "\n\tThe 'Origin' tab title should be 'Origin'"
+
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to get a 'Origin' tab content"
+    )
+    def test_origin_content_tab(self, driver):
+        tabs_page = TabsPage(
+            driver,
+            "https://demoqa.com/tabs"
+        )
+        tabs_page.open()
+        origin_tab_content = tabs_page.check_tabs("origin")[1]
+        assert origin_tab_content > 0, \
+            "\nActual result:" \
+            "\n\tThe 'Origin' tab content is empty on the page" \
+            f"\n\tActual 'Origin' tab content len: {origin_tab_content}" \
+            "\nExpected result:" \
+            "\n\tThe 'Origin' tab content len should be > 0"
+
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to open and get a correct 'Use' tab title"
+    )
+    def test_use_title_tab(self, driver):
+        tabs_page = TabsPage(
+            driver,
+            "https://demoqa.com/tabs"
+        )
+        tabs_page.open()
+        use_tab_title = tabs_page.check_tabs("use")[0]
+        assert use_tab_title == "Use", \
+            "\nActual result:" \
+            "\n\tThe 'Use' tab title is not equal to the expected " \
+            f"\n\tActual 'Use' tab title: {use_tab_title}" \
+            "\nExpected result:" \
+            "\n\tThe 'Use' tab title should be 'Use'"
+
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to get a 'Use' tab content"
+    )
+    def test_use_content_tab(self, driver):
+        tabs_page = TabsPage(
+            driver,
+            "https://demoqa.com/tabs"
+        )
+        tabs_page.open()
+        use_tab_content = tabs_page.check_tabs("use")[1]
+        assert use_tab_content > 0, \
+            "\nActual result:" \
+            "\n\tThe 'Use' tab content is empty on the page" \
+            f"\n\tActual 'Use' tab content len: {use_tab_content}" \
+            "\nExpected result:" \
+            "\n\tThe 'Use' tab content len should be > 0"
+
+    @allure.title(
+        "Verify that the user has an opportunity "
+        "to open and get a correct 'More' tab title"
     )
     @pytest.mark.xfail(
         reason="There's a known bug - "
                "The 'More' button tab is not clickable. "
                "So, a user can't open the 'More' tab content"
     )
-    def test_tabs(self, driver):
+    def test_more_title_tab(self, driver):
         tabs_page = TabsPage(
             driver,
             "https://demoqa.com/tabs"
         )
         tabs_page.open()
-        what_button, what_content = \
-            tabs_page.check_tabs("what")
-        use_button, use_content = \
-            tabs_page.check_tabs("use")
-        origin_button, origin_content = \
-            tabs_page.check_tabs("origin")
-        more_button, more_content = \
-            tabs_page.check_tabs("more")
-
-        assert what_button == "What" and what_content > 0, \
-            f"\nActual result:" \
-            f"\n\tWhat button is not equal to expected " \
-            f"or what content is empty." \
-            f"\n\tWhat button: {what_button}" \
-            f"\n\tWhat content: {what_content}" \
-            f"\nExpected result:" \
-            f"\n\tWhat button should be 'What' " \
-            f"and what content length should be more than 0"
-
-        assert use_button == "Use" and use_content > 0, \
-            f"\nActual result:" \
-            f"\n\tUse button is not equal to expected " \
-            f"or use content is empty." \
-            f"\n\tUse button: {use_button}" \
-            f"\n\tUse content: {use_content}" \
-            f"\nExpected result:" \
-            f"\n\tUse button should be 'Use' " \
-            f"and use content length should be more than 0"
-
-        assert origin_button == "Origin" and origin_content > 0, \
-            f"\nActual result:" \
-            f"\n\tOrigin button is not equal to expected " \
-            f"or origin content is empty." \
-            f"\n\tOrigin button: {origin_button}" \
-            f"\n\tOrigin content: {origin_content}" \
-            f"\nExpected result:" \
-            f"\n\tOrigin button should be 'Origin' " \
-            f"and origin content length should be more than 0"
-
-        assert more_button == "More" and more_content > 0, \
-            f"\nActual result:" \
-            f"\n\tMore button is not equal to expected " \
-            f"or more content is empty." \
-            f"\n\tMore button: {more_button}" \
-            f"\n\tMore content: {more_content}" \
-            f"\nExpected result:" \
-            f"\n\tMore button should be 'More' " \
-            f"and more content length should be more than 0"
+        more_tab_title = tabs_page.check_tabs("more")[0]
+        assert more_tab_title == "More", \
+            "\nActual result:" \
+            "\n\tThe 'More' tab title is not equal to the expected " \
+            f"\n\tActual 'More' tab title: {more_tab_title}" \
+            "\nExpected result:" \
+            "\n\tThe 'More' tab title should be 'More'"

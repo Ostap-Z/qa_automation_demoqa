@@ -26,7 +26,7 @@ class TestDatePicker:
             f"\n\tDate value after: {date_value_after}" \
             f"\nExpected result:" \
             f"\n\tDate input and output should be different. " \
-            f"So, the user changed a date."
+            f"\n\tSo, the user changed a date."
 
     @allure.title(
         "Verify that the user has an opportunity "
@@ -46,5 +46,5 @@ class TestDatePicker:
             f"\n\tDate time values before: {date_time_value_before}" \
             f"\n\tDate time values after: {date_time_value_after}" \
             f"\nExpected result:" \
-            f"\n\tDate should be changed. " \
-            f"So, before and after values should be different."
+            f"\n\tDate should be changed." \
+            f"\n\tSo, before and after values should be different."

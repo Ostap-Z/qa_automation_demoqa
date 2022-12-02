@@ -18,14 +18,16 @@ class TestMenu:
         )
         menu_page.open()
         result = menu_page.check_menu()
-        expected_result = ['Main Item 1',
-                           'Main Item 2',
-                           'Sub Item',
-                           'Sub Item',
-                           'SUB SUB LIST »',
-                           'Sub Sub Item 1',
-                           'Sub Sub Item 2',
-                           'Main Item 3']
+        expected_result = [
+            'Main Item 1',
+            'Main Item 2',
+            'Sub Item',
+            'Sub Item',
+            'SUB SUB LIST »',
+            'Sub Sub Item 1',
+            'Sub Sub Item 2',
+            'Main Item 3'
+        ]
         assert result == expected_result, \
             f"\nActual result:" \
             f"\n\tNav items: {result}" \
