@@ -28,8 +28,6 @@ class TestSortable:
             f"\n\tSortable items order before and after " \
             f"should be different. So, items order was changed"
 
-
-
     @allure.title(
         "Verify that the user has an opportunity "
         "to change an order of the 'Grid' sortable elements"
