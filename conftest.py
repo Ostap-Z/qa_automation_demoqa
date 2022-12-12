@@ -97,3 +97,4 @@ def _capture_screenshot(name):
 
 def pytest_html_report_title(report):
     report.title = "Demoqa UI test results"
+
