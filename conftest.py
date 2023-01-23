@@ -1,3 +1,6 @@
+from datetime import datetime
+
+import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -66,35 +69,23 @@ def driver(request):
         driver.maximize_window()
 
     yield driver
+
+    if request.node.rep_call.failed:
+        allure.attach(
+            driver.get_screenshot_as_png(),
+            name=request.function.__name__,
+            attachment_type=allure.attachment_type.PNG
+        )
     driver.quit()
 
 
-@pytest.mark.hookwrapper
-def pytest_runtest_makereport(item):
-    pytest_html = item.config.pluginmanager.getplugin('html')
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
     outcome = yield
-    report = outcome.get_result()
-    extra = getattr(report, 'extra', [])
-
-    if report.when == 'call' or report.when == "driver":
-        xfail = hasattr(report, 'wasxfail')
-        if (report.skipped and xfail) \
-           or (report.failed and not xfail):
-            file_name = report.nodeid.replace("::", "_") + ".png"
-            _capture_screenshot(file_name)
-            if file_name:
-                html = f'<div><img src="%s" alt="screenshot" ' \
-                       f'style="width:304px;height:228px;" ' \
-                       'onclick="window.open(this.src)" ' \
-                       'align="right"/></div>' % file_name
-                extra.append(pytest_html.extras.html(html))
-        report.extra = extra
-
-
-def _capture_screenshot(name):
-    driver.get_screenshot_as_file(name)
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+    return rep
 
 
 def pytest_html_report_title(report):
     report.title = "Demoqa UI test results"
-
