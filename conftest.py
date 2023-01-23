@@ -73,7 +73,7 @@ def driver(request):
     if request.node.rep_call.failed:
         allure.attach(
             driver.get_screenshot_as_png(),
-            name=request.function.__name__,
+            name=f"Screenshot {request.function.__name__} {datetime.today()}",
             attachment_type=allure.attachment_type.PNG
         )
     driver.quit()
