@@ -14,9 +14,6 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
 
 
-driver = None
-
-
 def pytest_addoption(parser):
     parser.addoption(
         "--browser_name",
@@ -34,7 +31,6 @@ def pytest_addoption(parser):
 
 @pytest.fixture
 def driver(request):
-    global driver
     browser_name = request.config.getoption("--browser_name").lower()
     headless_mode = request.config.getoption("--headless").lower()
     chrome_options = ChromeOptions()
