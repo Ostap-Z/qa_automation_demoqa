@@ -111,15 +111,6 @@ class DroppablePage(BasePage):
                     return drop_text_acceptable
 
 
-
-
-
-
-
-
-
-
-
     @allure.step(
         "Check the 'Prevent Propogation' drop"
     )
@@ -188,15 +179,6 @@ class DroppablePage(BasePage):
                          f"{text_greedy_box}, "
                          f"{text_greedy_inner_box}")
                 return text_greedy_box, text_greedy_inner_box
-
-
-
-
-
-
-
-
-
 
 
     @allure.step(
