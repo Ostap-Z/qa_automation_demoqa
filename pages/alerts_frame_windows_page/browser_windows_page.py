@@ -1,7 +1,8 @@
 import allure
 
 from pages.base_page import BasePage
-from locators.alerts_frame_windows_locators.browser_windows_locators import BrowserWindowsLocators
+from locators.alerts_frame_windows_locators.browser_windows_locators \
+    import BrowserWindowsLocators
 
 
 class BrowserWindowsPage(BasePage):

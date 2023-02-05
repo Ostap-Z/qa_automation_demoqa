@@ -1,7 +1,8 @@
 import allure
 
 from pages.base_page import BasePage
-from locators.alerts_frame_windows_locators.frames_locators import FramesLocators
+from locators.alerts_frame_windows_locators.frames_locators \
+    import FramesLocators
 
 
 class FramesPage(BasePage):

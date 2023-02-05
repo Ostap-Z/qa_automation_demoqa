@@ -29,15 +29,24 @@ class WebTablePage(BasePage):
                     self.locators.ADD_BUTTON).click()
             log.info("Registration person form is opened")
 
-            with allure.step(f"Fills in the 'First Name' field with data: {first_name}"):
+            with allure.step(
+                    "Fills in the 'First Name' field with data: "
+                    f"{first_name}"
+            ):
                 self.element_is_visible(
                     self.locators.FIRST_NAME_INPUT).send_keys(first_name)
 
-            with allure.step(f"Fills in the 'Last Name' field with data: {last_name}"):
+            with allure.step(
+                    "Fills in the 'Last Name' field with data: "
+                    f"{last_name}"
+            ):
                 self.element_is_visible(
                     self.locators.LAST_NAME_INPUT).send_keys(last_name)
 
-            with allure.step(f"Fills in the 'Email' field with data: {email}"):
+            with allure.step(
+                    "Fills in the 'Email' field with data: "
+                    f"{email}"
+            ):
                 self.element_is_visible(
                     self.locators.EMAIL_INPUT).send_keys(email)
 
@@ -45,15 +54,26 @@ class WebTablePage(BasePage):
                 self.element_is_visible(
                     self.locators.AGE_INPUT).send_keys(age)
 
-            with allure.step(f"Fills in the 'Salary' field with data: {salary}"):
+            with allure.step(
+                    "Fills in the 'Salary' field with data: "
+                    f"{salary}"
+            ):
                 self.element_is_visible(
                     self.locators.SALARY_INPUT).send_keys(salary)
 
-            with allure.step(f"Fills in the 'Department' field with data: {department}"):
+            with allure.step(
+                    "Fills in the 'Department' field with data: "
+                    f"{department}"
+            ):
                 self.element_is_visible(
                     self.locators.DEPARTMENT_INPUT).send_keys(department)
-            log.info(f"Filled in registration person form with data: "
-                     f"{first_name, last_name, email, age, salary, department}")
+            log.info("Filled in registration person form with data: "
+                     f"{first_name}, "
+                     f"{last_name}, "
+                     f"{email}, "
+                     f"{age}, "
+                     f"{salary}, "
+                     f"{department}")
 
             with allure.step("Submits a registration form"):
                 self.element_is_visible(
@@ -82,10 +102,12 @@ class WebTablePage(BasePage):
     def search_person(self, key_word):
         log = self.get_logger()
 
-        with allure.step(f"Fills in the search field with key word: {key_word}"):
+        with allure.step(
+                f"Fills in the search field with key word: {key_word}"
+        ):
             self.element_is_visible(
                 self.locators.SEARCH_INPUT).send_keys(key_word)
-        log.info(f"Searching person in the table")
+        log.info("Searching person in the table")
 
     @allure.step(
         "Validate a search result"
@@ -112,7 +134,7 @@ class WebTablePage(BasePage):
                 self.locators.UPDATE_BUTTON).click()
         log.info("Update person form is opened")
 
-        with allure.step(f"Clear the presented 'Age' data"):
+        with allure.step("Clear the presented 'Age' data"):
             self.element_is_visible(
                 self.locators.AGE_INPUT).clear()
         log.info("Cleared the age field")

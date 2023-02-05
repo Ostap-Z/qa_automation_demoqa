@@ -25,7 +25,9 @@ class DownloadPage(BasePage):
             with open(path_name_file, "wb+") as file:
                 offset = link_b.find(b'\xff\xd8')
                 file.write(link_b[offset:])
-                with allure.step("Check if created file is existing in the OS"):
+                with allure.step(
+                        "Check if created file is existing in the OS"
+                ):
                     check_file = os.path.exists(path_name_file)
                     log.info(f"File {file} was created: {check_file}")
         self.remove_file(path_name_file)

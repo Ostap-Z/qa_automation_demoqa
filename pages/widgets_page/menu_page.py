@@ -25,7 +25,9 @@ class MenuPage(BasePage):
                                  "to collect menu items"):
                     self.action_move_to_element(item)
 
-                with allure.step(f"Append menu item '{item.text}' to the list"):
+                with allure.step(
+                        f"Append menu item '{item.text}' to the list"
+                ):
                     data.append(item.text)
                 log.info(f"Collected item: {item.text}")
 

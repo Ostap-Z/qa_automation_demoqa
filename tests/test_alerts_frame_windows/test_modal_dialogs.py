@@ -43,10 +43,6 @@ class TestModalDialogs:
             "\n\tThe 'Small' modal dialog content " \
             "length should be > 0"
 
-
-
-
-
     @allure.title(
         "Verify that the user has an opportunity to "
         "get a correct title name of the 'Large' modal dialog"

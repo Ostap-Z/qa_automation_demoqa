@@ -30,7 +30,7 @@ class TabsPage(BasePage):
                 "content": self.locators.MORE_CONTENT
             }
         }
-        with allure.step(f"Open the tab"):
+        with allure.step("Open the tab"):
             tab_button = self.element_is_visible(
                 tab[tab_name]["button"])
             tab_button.click()

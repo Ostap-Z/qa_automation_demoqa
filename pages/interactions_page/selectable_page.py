@@ -3,7 +3,8 @@ from random import sample
 import allure
 
 from pages.base_page import BasePage
-from locators.interactions_locators.selectable_locators import SelectableLocators
+from locators.interactions_locators.selectable_locators \
+    import SelectableLocators
 
 
 class SelectablePage(BasePage):
@@ -27,7 +28,7 @@ class SelectablePage(BasePage):
             self.element_is_visible(
                 self.locators.TAB_LIST).click()
 
-        log.info(f"Opened LIST tab")
+        log.info("Opened LIST tab")
         self.click_selectable_item(self.locators.LIST_ITEMS)
 
         with allure.step("Get a text of the "
@@ -46,7 +47,7 @@ class SelectablePage(BasePage):
     def select_grid_item(self):
         log = self.get_logger()
         self.element_is_visible(self.locators.TAB_GRID).click()
-        log.info(f"Opened GRID tab")
+        log.info("Opened GRID tab")
         self.click_selectable_item(self.locators.GRID_ITEMS)
         active_element = self.element_is_visible(
             self.locators.GRID_ITEM_ACTIVE).text

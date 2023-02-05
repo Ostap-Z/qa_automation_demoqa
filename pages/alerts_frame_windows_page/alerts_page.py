@@ -5,7 +5,8 @@ import allure
 from selenium.common import UnexpectedAlertPresentException
 
 from pages.base_page import BasePage
-from locators.alerts_frame_windows_locators.alerts_locators import AlertsLocators
+from locators.alerts_frame_windows_locators.alerts_locators \
+    import AlertsLocators
 
 
 class AlertsPage(BasePage):

@@ -32,7 +32,7 @@ class SortablePage(BasePage):
             }
         }
 
-        with allure.step(f"Open the tab"):
+        with allure.step("Open the tab"):
             tab = self.element_is_visible(item[item_type]['tab'])
             tab.click()
 

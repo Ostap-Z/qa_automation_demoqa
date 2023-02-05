@@ -30,7 +30,7 @@ class AccordianPage(BasePage):
         with allure.step("Remove ads"):
             self.hide_ads()
 
-        with allure.step(f"Open the tab"):
+        with allure.step("Open the tab"):
             accordian_title = self.element_is_visible(
                 accordian[accordian_num]['title'])
             accordian_title.click()

@@ -123,7 +123,7 @@ class BasePage:
         )
         if len(all_iframes) > 0:
             self.driver.execute_script("""
-                var elems = document.getElementsByTagName("iframe"); 
+                var elems = document.getElementsByTagName("iframe");
                 for(var i = 0, max = elems.length; i < max; i++)
                      {
                          elems[i].hidden=true;
@@ -138,7 +138,7 @@ class BasePage:
         )
         if len(all_img_ads) > 0:
             self.driver.execute_script("""
-                var elems = document.getElementsByTagName("img"); 
+                var elems = document.getElementsByTagName("img");
                 for(var i = 0, max = elems.length; i < max; i++)
                      {
                          elems[i].hidden=true;

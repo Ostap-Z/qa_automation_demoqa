@@ -73,4 +73,3 @@ class FormLocators:
         By.XPATH,
         "//div[@class='table-responsive']//td[2]"
     )
-

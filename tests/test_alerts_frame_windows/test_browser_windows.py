@@ -1,6 +1,7 @@
 import allure
 
-from pages.alerts_frame_windows_page.browser_windows_page import BrowserWindowsPage
+from pages.alerts_frame_windows_page.browser_windows_page \
+    import BrowserWindowsPage
 
 
 @allure.suite("Alerts, frames and windows suite")

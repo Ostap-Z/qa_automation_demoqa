@@ -26,7 +26,7 @@ class CheckBoxPage(BasePage):
         item_list = self.elements_are_visible(
             self.locators.CHECK_BOXES_ITEM_LIST)
 
-        log.info(f"I'm gonna click 10 times on the random items")
+        log.info("I'm gonna click 10 times on the random items")
         count = 10
         while count != 0:
             item = item_list[randint(1, 5)]

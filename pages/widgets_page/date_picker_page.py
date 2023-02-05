@@ -1,5 +1,3 @@
-import signal
-
 import allure
 
 from pages.base_page import BasePage

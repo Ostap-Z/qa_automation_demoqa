@@ -1,7 +1,8 @@
 import allure
 
 from pages.base_page import BasePage
-from locators.alerts_frame_windows_locators.modal_dialogs_locators import ModalDialogsLocators
+from locators.alerts_frame_windows_locators.modal_dialogs_locators \
+    import ModalDialogsLocators
 
 
 class ModalDialogsPage(BasePage):

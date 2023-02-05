@@ -4,7 +4,8 @@ import allure
 from selenium.webdriver import Keys
 
 from pages.base_page import BasePage
-from locators.widgets_locators.auto_complete_locators import AutoCompleteLocators
+from locators.widgets_locators.auto_complete_locators \
+    import AutoCompleteLocators
 from generator.generator import generated_color
 
 
@@ -53,10 +54,10 @@ class AutoCompletePage(BasePage):
 
         with allure.step("Remove values from the field"):
             for value in remove_button_list:
-                with allure.step(f"Remove a value"):
+                with allure.step("Remove a value"):
                     value.click()
 
-                log.info(f"Removed value from color list")
+                log.info("Removed value from color list")
                 break
 
         with allure.step("Get amount of values after remove"):

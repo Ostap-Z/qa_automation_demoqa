@@ -1,14 +1,15 @@
 import allure
 
 from pages.base_page import BasePage
-from locators.elements_locators.radio_button_locators import RadioButtonPageLocators
+from locators.elements_locators.radio_button_locators \
+    import RadioButtonPageLocators
 
 
 class RadioButtonPage(BasePage):
     locators = RadioButtonPageLocators()
 
     @allure.step(
-        f"Click on the different radio buttons"
+        "Click on the different radio buttons"
     )
     def click_on_the_radio_button(self, choice):
         log = self.get_logger()
