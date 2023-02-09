@@ -101,7 +101,7 @@ def create_remote_driver(config):
         options = get_firefox_options(config)
 
     desired_capabilities = {
-        "version": config["version"],
+        "browser_version": config["browser_version"],
         "acceptInsecureCerts": True,
         "screenResolution": "1280x1024x24"
     }
