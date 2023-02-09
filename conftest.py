@@ -10,8 +10,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
 
 
 def pytest_addoption(parser):
@@ -22,46 +22,130 @@ def pytest_addoption(parser):
         help="Choose browser: [Chrome, Firefox, Edge]"
     )
     parser.addoption(
+        "--browser_version",
+        action="store",
+        default=""
+    )
+    parser.addoption(
         "--headless",
         action="store",
-        default="no",
-        help="Run tests in headless mode: yes, no"
+        default=False,
+        help="Run tests in headless mode"
+    )
+    parser.addoption(
+        "--remote",
+        action="store",
+        default=False
+    )
+    parser.addoption(
+        "--hub",
+        action="store",
+        default="localhost"
     )
 
 
-@pytest.fixture
-def driver(request):
-    browser_name = request.config.getoption("--browser_name").lower()
-    headless_mode = request.config.getoption("--headless").lower()
-    chrome_options = ChromeOptions()
-    firefox_options = FirefoxOptions()
-    edge_options = EdgeOptions()
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+    return rep
 
-    if browser_name == "chrome":
-        if headless_mode == "yes":
-            chrome_options.add_argument("headless")
-        else:
-            chrome_options.add_argument("start-maximized")
+
+@pytest.fixture
+def config(request):
+    browser = request.config.getoption("--browser_name")
+    browser_version = request.config.getoption("--browser_version")
+    hub = request.config.getoption("--hub")
+    headless = False
+    remote = False
+
+    if request.config.getoption("--headless") == "Yes".lower():
+        headless = True
+    if request.config.getoption("--remote") == "Yes".lower():
+        remote = True
+
+    return {
+        "browser": browser,
+        "browser_version": browser_version,
+        "headless": headless,
+        "remote": remote,
+        "hub": hub
+    }
+
+
+def get_chrome_options(config):
+    options = ChromeOptions()
+    options.headless = config.get("headless", None)
+    return options
+
+
+def get_firefox_options(config):
+    options = FirefoxOptions()
+    options.headless = config.get("headless", None)
+    return options
+
+
+def get_edge_options(config):
+    options = EdgeOptions()
+    options.headless = config.get("headless", None)
+    return options
+
+
+def create_remote_driver(config):
+    if config["browser"] == "chrome":
+        options = get_chrome_options(config)
+    elif config["browser"] == "edge":
+        options = get_edge_options(config)
+    elif config["browser"] == "firefox":
+        options = get_firefox_options(config)
+
+    desired_capabilities = {
+        "version": config["version"],
+        "acceptInsecureCerts": True,
+        "screenResolution": "1280x1024x24"
+    }
+
+    return webdriver.Remote(
+        command_executor=f"http://{config['hub']}:4444/wd/hub",
+        options=options,
+        desired_capabilities=desired_capabilities
+    )
+
+
+def create_local_driver(config):
+    driver = None
+
+    if config["browser"] == "chrome":
+        options = get_chrome_options(config)
         driver = webdriver.Chrome(
             service=ChromeService(ChromeDriverManager().install()),
-            options=chrome_options)
-
-    elif browser_name == "firefox":
-        if headless_mode == "yes":
-            firefox_options.headless = True
-        driver = webdriver.Firefox(
-            service=FirefoxService(GeckoDriverManager().install()),
-            options=firefox_options
+            options=options
         )
-        driver.maximize_window()
 
-    elif browser_name == "edge":
-        if headless_mode == "yes":
-            edge_options.add_argument("headless")
+    elif config["browser"] == "edge":
+        options = get_edge_options(config)
         driver = webdriver.Edge(
             service=EdgeService(EdgeChromiumDriverManager().install()),
-            options=edge_options
+            options=options
         )
+
+    elif config["browser"] == "firefox":
+        options = get_firefox_options(config)
+        driver = webdriver.Firefox(
+            service=FirefoxService(GeckoDriverManager().install()),
+            options=options
+        )
+    return driver
+
+
+@pytest.fixture
+def driver(request, config):
+
+    if config.get("remote", False):
+        driver = create_remote_driver(config)
+    else:
+        driver = create_local_driver(config)
         driver.maximize_window()
 
     yield driver
@@ -73,14 +157,6 @@ def driver(request):
             attachment_type=allure.attachment_type.PNG
         )
     driver.quit()
-
-
-@pytest.hookimpl(hookwrapper=True, tryfirst=True)
-def pytest_runtest_makereport(item, call):
-    outcome = yield
-    rep = outcome.get_result()
-    setattr(item, "rep_" + rep.when, rep)
-    return rep
 
 
 def pytest_html_report_title(report):
