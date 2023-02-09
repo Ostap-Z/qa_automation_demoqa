@@ -141,6 +141,7 @@ def create_local_driver(config):
 
 @pytest.fixture
 def driver(request, config):
+    driver = None
 
     if config.get("remote", False):
         driver = create_remote_driver(config)
